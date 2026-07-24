@@ -3,7 +3,7 @@
   "command": {
     "notify": {
       "description": "Trigger a desktop notification (sound + popup)",
-      "template": "Run the notification script: bash scripts/notify.sh 'WordWeave' 'Task complete: $ARGUMENTS'"
+      "template": "Run the notification script: bash scripts/notify.sh 'Guess the Words' 'Task complete: $ARGUMENTS'"
     }
   }
 }

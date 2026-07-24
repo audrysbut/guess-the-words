@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'preact/hooks'
 
-const STORAGE_KEY = 'wordweave-player-name'
+const STORAGE_KEY = 'guess-the-words-player-name'
 
 interface HomeScreenProps {
   onStartSolo: (name: string) => void
@@ -30,7 +30,7 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
   if (initialRoomId) {
     return (
       <div class="page home-screen">
-        <h1 class="title">🧩 WordWeave</h1>
+        <h1 class="title">🧩 Guess the Words</h1>
         <p class="subtitle">Join Game</p>
         <div class="card">
           <label for="join-name">Your Name:</label>
@@ -54,8 +54,8 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
 
   return (
     <div class="page home-screen">
-      <h1 class="title">🧩 WordWeave</h1>
-      <p class="subtitle">Guess the words, weave your way to victory!</p>
+      <h1 class="title">🧩 Guess the Words</h1>
+      <p class="subtitle">A multiplayer guessing game!</p>
       <div class="card">
         <label for="menu-name">Your Name:</label>
         <input

@@ -1,6 +1,6 @@
 import { execSync } from "child_process"
 
-const SCRIPT = "bash scripts/notify.sh 'WordWeave'"
+const SCRIPT = "bash scripts/notify.sh 'Guess the Words'"
 
 export default async () => {
   return {

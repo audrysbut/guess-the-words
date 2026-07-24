@@ -26,7 +26,7 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
 
   return (
     <div class="page lobby-screen">
-      <h1 class="title" style="font-size: 1.8rem">WordWeave</h1>
+      <h1 class="title" style="font-size: 1.8rem">Guess the Words</h1>
       <div class="card">
         <h2>Lobby</h2>
         <p class="player-count">{players.length} player{players.length !== 1 ? 's' : ''} joined</p>

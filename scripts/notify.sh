@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-TITLE="${1:-WordWeave}"
+TITLE="${1:-Guess the Words}"
 BODY="${2:-Done}"
 ICON="${3:-terminal}"
 SOUND="${4:-/usr/share/sounds/Pop/stereo/notification/message.oga}"

@@ -1,5 +1,5 @@
 {
-  "name": "wordweave",
+  "name": "guess-the-words",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -7,10 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "postbuild": "bash scripts/notify.sh 'WordWeave' 'Build complete'",
+    "postbuild": "bash scripts/notify.sh 'Guess the Words' 'Build complete'",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "notify": "bash scripts/notify.sh 'WordWeave' 'Task complete'"
+    "notify": "bash scripts/notify.sh 'Guess the Words' 'Task complete'"
   },
   "dependencies": {
     "peerjs": "^1.5.4",
