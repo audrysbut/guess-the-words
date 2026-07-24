@@ -7,11 +7,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "bash scripts/notify.sh 'WordWeave' 'Build complete'",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "notify": "bash scripts/notify.sh 'WordWeave' 'Task complete'"
   },
   "dependencies": {
-    "@preact/signals": "^2.0.3",
     "peerjs": "^1.5.4",
     "preact": "^10.26.4"
   },

@@ -2,7 +2,6 @@ import Peer, { DataConnection } from 'peerjs'
 import type { Message } from '@/types/messages'
 import type { GameState, GameConfig } from '@/types/game'
 import { createInitialGameState } from '@/types/game'
-import { selectWordsForGame } from '@/data/words'
 
 const ICE_SERVERS: RTCIceServer[] = [
   { urls: 'stun:stun.l.google.com:19302' },
@@ -36,6 +35,7 @@ export class PeerManager {
 
   get isHost() { return this._isHost }
   get id() { return this.peerId }
+  get playerIds(): string[] { return Array.from(this.connections.keys()) }
 
   private tryCreatePeer(id: string): Promise<Peer> {
     return new Promise((resolve, reject) => {
@@ -69,7 +69,7 @@ export class PeerManager {
     this.peer!.on('connection', (conn: DataConnection) => {
       const joinerId = conn.peer
       this.connections.set(joinerId, conn)
-      this.setupConnection(conn, joinerId, state)
+      this.setupConnection(conn, joinerId)
     })
 
     this.peer!.on('error', (err) => {
@@ -106,7 +106,7 @@ export class PeerManager {
     })
   }
 
-  private setupConnection(conn: DataConnection, senderId: string, _state?: GameState) {
+  private setupConnection(conn: DataConnection, senderId: string) {
     conn.on('data', (data: unknown) => {
       const message = data as Message
       this.onMessageCb?.(message, senderId)
@@ -115,8 +115,7 @@ export class PeerManager {
     conn.on('close', () => {
       this.connections.delete(senderId)
       if (this._isHost) {
-        const leftMsg: Message = { type: 'player-left', playerId: senderId }
-        this.onMessageCb?.(leftMsg, senderId)
+        this.onMessageCb?.({ type: 'player-left', playerId: senderId }, senderId)
       } else {
         this.onMessageCb?.({ type: 'error', message: 'Host disconnected' }, senderId)
       }
@@ -129,10 +128,11 @@ export class PeerManager {
     })
   }
 
-  sendToHost(message: Message) {
-    this.connections.forEach(conn => {
-      if (conn.open) conn.send(message)
-    })
+  sendTo(peerId: string, message: Message) {
+    const conn = this.connections.get(peerId)
+    if (conn && conn.open) {
+      conn.send(message)
+    }
   }
 
   onMessage(callback: MessageCallback) {

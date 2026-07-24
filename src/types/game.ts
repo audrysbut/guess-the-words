@@ -74,7 +74,7 @@ export interface GameState {
   scores: Record<string, number>
   turnEndsAt: number | null
   roundWinner: string | null
-  lastGuessResult: GuessResult | null
+  lastGuessResult?: GuessResult | null
 }
 
 export interface GuessResult {
