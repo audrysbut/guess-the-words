@@ -86,6 +86,16 @@ html, body {
   background: var(--border);
 }
 
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-row .btn {
+  flex: 1;
+}
+
 /* Inputs */
 input, select {
   background: var(--surface2);

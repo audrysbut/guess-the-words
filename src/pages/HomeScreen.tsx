@@ -67,12 +67,14 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
           maxLength={20}
           autoFocus
         />
-        <button class="btn btn-primary" onClick={handleCreate} disabled={!name.trim()}>
-          Create Game
-        </button>
-        <button class="btn btn-secondary" onClick={handleSolo} disabled={!name.trim()}>
-          Solo Practice
-        </button>
+        <div class="btn-row">
+          <button class="btn btn-primary" onClick={handleCreate} disabled={!name.trim()}>
+            Create Game
+          </button>
+          <button class="btn btn-secondary" onClick={handleSolo} disabled={!name.trim()}>
+            Solo Practice
+          </button>
+        </div>
         {error && <p class="error">{error}</p>}
       </div>
     </div>
