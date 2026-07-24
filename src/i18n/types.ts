@@ -3,6 +3,7 @@ export type Language = 'en' | 'lt'
 export type TranslationKey =
   | 'title'
   | 'subtitle'
+  | 'player'
   | 'yourName'
   | 'enterYourName'
   | 'createGame'

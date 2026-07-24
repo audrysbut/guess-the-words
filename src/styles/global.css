@@ -615,10 +615,85 @@ input:focus, select:focus {
 
 .game-sidebar {
   width: 240px;
-  padding: 20px;
+  padding: 16px;
   background: var(--surface);
   border-right: 1px solid var(--border);
   overflow-y: auto;
+}
+
+.scoreboard-table {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sb-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.sb-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  background: var(--surface2);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.sb-row.active-turn {
+  border-color: var(--primary);
+  background: rgba(124, 92, 252, 0.12);
+  box-shadow: 0 0 0 1px rgba(124, 92, 252, 0.2);
+}
+
+.sb-row.me {
+  background: rgba(124, 92, 252, 0.06);
+}
+
+.sb-row.me.active-turn {
+  background: rgba(124, 92, 252, 0.15);
+}
+
+.sb-col-player {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sb-col-pts {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  min-width: 28px;
+  text-align: right;
+}
+
+.sb-turn-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--primary);
+  color: white;
+  animation: pulse 1.5s ease infinite;
 }
 
 .game-main {

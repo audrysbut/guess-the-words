@@ -1,6 +1,7 @@
 import type { Translations } from '../types'
 
 const en: Translations = {
+  player: 'Player',
   title: 'Guess the Words',
   subtitle: 'A multiplayer guessing game!',
   yourName: 'Your Name:',

@@ -94,14 +94,24 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
   return (
     <div class="page game-page">
       <div class="game-sidebar">
-        {sortedPlayers.map(p => (
-          <div key={p.id} class={`player-item ${p.id === gameState.currentTurn ? 'active-turn' : ''} ${p.id === playerId ? 'me' : ''}`}>
-            <span class="player-name">
-              {p.name}{p.id === playerId ? ` ${t('you')}` : ''}
-            </span>
-            <span class="player-score">{p.points} {t('pts')}</span>
+        <div class="scoreboard-table">
+          <div class="sb-header">
+            <span class="sb-col-player">{t('player')}</span>
+            <span class="sb-col-pts">{t('pts')}</span>
           </div>
-        ))}
+          {sortedPlayers.map(p => {
+            const isTurn = p.id === gameState.currentTurn
+            return (
+              <div key={p.id} class={`sb-row ${isTurn ? 'active-turn' : ''} ${p.id === playerId ? 'me' : ''}`}>
+                <span class="sb-col-player">
+                  {p.name}{p.id === playerId ? ` ${t('you')}` : ''}
+                </span>
+                <span class="sb-col-pts">{p.points}</span>
+                {isTurn && <span class="sb-turn-badge">{t('guess')}</span>}
+              </div>
+            )
+          })}
+        </div>
         {!isSolo && (
           <Timer turnEndsAt={gameState.turnEndsAt} isActive={phase === 'playing'} />
         )}

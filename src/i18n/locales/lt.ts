@@ -1,6 +1,7 @@
 import type { Translations } from '../types'
 
 const lt: Translations = {
+  player: 'Žaidėjas',
   title: 'Atspėk Žodžius',
   subtitle: 'Daugelio žaidėjų atspėjimo žaidimas!',
   yourName: 'Tavo vardas:',
