@@ -1,4 +1,5 @@
 import type { Player } from '@/types/game'
+import { useT } from '@/i18n/context'
 
 interface LobbyProps {
   players: Player[]
@@ -9,6 +10,7 @@ interface LobbyProps {
 }
 
 export default function Lobby({ players, isHost, roomId, onStartGame, error }: LobbyProps) {
+  const { t } = useT()
   const inviteUrl = `${window.location.origin}/guess-the-words/?room=${roomId}`
 
   const copyLink = async () => {
@@ -26,16 +28,16 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
 
   return (
     <div class="page lobby-screen">
-      <h1 class="title" style="font-size: 1.8rem">Guess the Words</h1>
+      <h1 class="title" style="font-size: 1.8rem">{t('title')}</h1>
       <div class="card">
-        <h2>Lobby</h2>
-        <p class="player-count">{players.length} player{players.length !== 1 ? 's' : ''} joined</p>
+        <h2>{t('lobby')}</h2>
+        <p class="player-count">{players.length} {t('playersJoined')}</p>
         <div class="player-list">
           {players.map(p => (
             <div key={p.id} class={`player-item ${p.isHost ? 'host' : ''}`}>
               <span class="player-dot" />
               <span class="player-name">{p.name}</span>
-              {p.isHost && <span class="host-badge">Host</span>}
+              {p.isHost && <span class="host-badge">{t('host')}</span>}
             </div>
           ))}
         </div>
@@ -43,15 +45,15 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
           <div class="lobby-actions">
             <div class="invite-row">
               <input type="text" readOnly value={inviteUrl} class="invite-input" onClick={e => (e.target as HTMLInputElement).select()} />
-              <button class="btn btn-accent" onClick={copyLink}>Copy Link</button>
+              <button class="btn btn-accent" onClick={copyLink}>{t('copyLink')}</button>
             </div>
             <button class="btn btn-primary btn-large" onClick={onStartGame}>
-              Start Game
+              {t('startGame')}
             </button>
           </div>
         )}
         {!isHost && (
-          <p class="waiting-text">Waiting for host to start the game...</p>
+          <p class="waiting-text">{t('waitingForHost')}</p>
         )}
         {error && <p class="error">{error}</p>}
       </div>

@@ -113,6 +113,29 @@ input:focus, select:focus {
   border-color: var(--primary);
 }
 
+/* ====== LANGUAGE SWITCHER ====== */
+.lang-switcher {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.lang-switcher:hover {
+  background: var(--border);
+  transform: translateY(-1px);
+}
+
 /* ====== HOME ====== */
 .home-screen {
   text-align: center;

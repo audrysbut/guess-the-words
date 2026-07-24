@@ -3,21 +3,27 @@ import { PeerManager } from '@/webrtc/peer-manager'
 import HomeScreen from '@/pages/HomeScreen'
 import Lobby from '@/pages/Lobby'
 import GameScreen from '@/pages/GameScreen'
-import type { GameState, GameConfig, Player } from '@/types/game'
+import type { GameState, GameConfig, Player, Language } from '@/types/game'
 import type { Message as PeerMessage } from '@/types/messages'
 import { ALL_THEMES } from '@/types/game'
 import { selectWordsForGame } from '@/data/words'
+import { I18nProvider } from '@/i18n/context'
 
 const DEFAULT_CONFIG: GameConfig = {
   totalRounds: 8,
   themes: [...ALL_THEMES],
   timeLimit: 30,
+  language: 'lt',
 }
 
 export default function App() {
   const params = new URLSearchParams(window.location.search)
   const initialRoomId = params.get('room')
   const managerRef = useRef<PeerManager | null>(null)
+
+  const [lang, setLang] = useState<Language>(() => {
+    return (localStorage.getItem('guess-the-words-lang') as Language) || 'lt'
+  })
 
   const [screen, setScreen] = useState<'home' | 'lobby' | 'game'>('home')
   const [playerName, setPlayerName] = useState('')
@@ -38,6 +44,12 @@ export default function App() {
   const isSolo = !isHost && !hasPeers
   const displayState = isHost || hasPeers ? gameState : soloGameState
   const displayPlayerId = peerId || soloGameState?.players[0]?.id || ''
+
+  const effectiveLang: Language = displayState?.config?.language || lang
+
+  useEffect(() => {
+    localStorage.setItem('guess-the-words-lang', lang)
+  }, [lang])
 
   /* ====== Multiplayer: Host game logic ====== */
 
@@ -74,7 +86,7 @@ export default function App() {
       managerRef.current?.send({ type: 'state_sync', state: final })
       return
     }
-    const words = selectWordsForGame(current.config.themes, current.config.totalRounds)
+    const words = selectWordsForGame(current.config.themes, current.config.totalRounds, current.config.language)
     const nextWord = words[nextRound % words.length]
     if (!nextWord) {
       const final: GameState = { ...current, phase: 'game_over', currentTurn: '', turnEndsAt: null }
@@ -108,7 +120,7 @@ export default function App() {
       for (let ti = 0; ti < gs.currentTokens.length; ti++) {
         if (newRevealed[ti]) continue
         const tok = gs.currentTokens[ti].toLowerCase()
-        if ([...tok].every(c => !/[a-zA-Z]/.test(c) || newGuessed.includes(c))) {
+        if ([...tok].every(c => !/\p{L}/u.test(c) || newGuessed.includes(c))) {
           newRevealed[ti] = true
         }
       }
@@ -229,6 +241,7 @@ export default function App() {
     if (message.type === 'state_sync' && !host) {
       setGameState(message.state)
       setPlayers(message.state.players)
+      setLang(message.state.config.language)
       if (message.state.phase !== 'lobby') {
         setScreen('game')
       }
@@ -255,7 +268,7 @@ export default function App() {
     setError(null)
     try {
       const m = new PeerManager()
-      const config = { ...DEFAULT_CONFIG }
+      const config = { ...DEFAULT_CONFIG, language: lang }
       const { roomCode: code, state } = await m.createRoom(name, config)
       managerRef.current = m
       m.onMessage(handlePeerMessage)
@@ -268,7 +281,7 @@ export default function App() {
       const url = `${window.location.origin}/guess-the-words/?room=${code}`
       window.history.replaceState(null, '', url)
     } catch {
-      setError('Failed to create room')
+      setError(lang === 'lt' ? 'Nepavyko sukurti kambario' : 'Failed to create room')
     }
   }
 
@@ -287,7 +300,7 @@ export default function App() {
       setGameState(null)
       setScreen('lobby')
     } catch {
-      setError('Failed to join room')
+      setError(lang === 'lt' ? 'Nepavyko prisijungti prie kambario' : 'Failed to join room')
     }
   }
 
@@ -296,7 +309,7 @@ export default function App() {
     if (!m?.isHost) return
     const gs = gameStateRef.current
     if (!gs) return
-    const words = selectWordsForGame(gs.config.themes, gs.config.totalRounds)
+    const words = selectWordsForGame(gs.config.themes, gs.config.totalRounds, gs.config.language)
     const firstWord = words[0]
     const newState: GameState = {
       ...gs, phase: 'round_intro', currentRound: 0,
@@ -314,14 +327,15 @@ export default function App() {
   const handleStartSolo = (name: string) => {
     setPlayerName(name)
     const playerId = `solo-${Date.now()}`
-    const words = selectWordsForGame(DEFAULT_CONFIG.themes, DEFAULT_CONFIG.totalRounds)
+    const soloConfig = { ...DEFAULT_CONFIG, language: lang }
+    const words = selectWordsForGame(soloConfig.themes, soloConfig.totalRounds, lang)
     soloWordListRef.current = words
     const firstWord = words[0]
     const soloState: GameState = {
       phase: 'round_intro',
       players: [{ id: playerId, name, points: 0, isHost: true }],
-      config: { ...DEFAULT_CONFIG },
-      currentRound: 0, totalRounds: DEFAULT_CONFIG.totalRounds,
+      config: { ...soloConfig },
+      currentRound: 0, totalRounds: soloConfig.totalRounds,
       currentTurn: '', currentWord: firstWord.answer,
       currentTokens: firstWord.tokens,
       revealedTokens: firstWord.tokens.map(() => false),
@@ -344,7 +358,7 @@ export default function App() {
         for (let ti = 0; ti < prev.currentTokens.length; ti++) {
           if (newRevealed[ti]) continue
           const tok = prev.currentTokens[ti].toLowerCase()
-          if ([...tok].every(c => !/[a-zA-Z]/.test(c) || newGuessed.includes(c))) {
+          if ([...tok].every(c => !/\p{L}/u.test(c) || newGuessed.includes(c))) {
             newRevealed[ti] = true
           }
         }
@@ -496,23 +510,31 @@ export default function App() {
       ? handleHostWordGuess
       : (w: string) => managerRef.current?.send({ type: 'guess_word', playerId: displayPlayerId, word: w })
 
+  /* ====== Language Switcher ====== */
+
+  const toggleLang = () => {
+    setLang(prev => prev === 'lt' ? 'en' : 'lt')
+  }
+
   /* ====== Render ====== */
 
+  let content: preact.ComponentChild
+
   if (screen === 'home') {
-    return (
+    content = (
       <HomeScreen
         onStartSolo={handleStartSolo}
         onCreateRoom={handleCreateRoom}
         onJoinRoom={handleJoinRoom}
         error={error}
         initialRoomId={initialRoomId ?? undefined}
+        lang={lang}
+        onToggleLang={toggleLang}
       />
     )
-  }
-
-  if (screen === 'lobby') {
+  } else if (screen === 'lobby') {
     const roomId = managerRef.current?.id || initialRoomId || ''
-    return (
+    content = (
       <Lobby
         players={players}
         isHost={isHost}
@@ -521,10 +543,8 @@ export default function App() {
         error={error}
       />
     )
-  }
-
-  if (displayState) {
-    return (
+  } else if (displayState) {
+    content = (
       <GameScreen
         gameState={displayState}
         playerId={displayPlayerId}
@@ -533,12 +553,20 @@ export default function App() {
         isSolo={isSolo}
       />
     )
+  } else {
+    content = (
+      <div class="page">
+        <p>{lang === 'lt' ? 'Jungiamasi...' : 'Connecting...'}</p>
+        {error && <p class="error">{error}</p>}
+      </div>
+    )
   }
 
   return (
-    <div class="page">
-      <p>Connecting...</p>
-      {error && <p class="error">{error}</p>}
-    </div>
+    <I18nProvider lang={effectiveLang} setLang={setLang}>
+      <div class="app">
+        {content}
+      </div>
+    </I18nProvider>
   )
 }

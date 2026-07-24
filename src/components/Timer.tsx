@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'preact/hooks'
+import { useT } from '@/i18n/context'
 
 interface TimerProps {
   turnEndsAt: number | null
@@ -7,6 +8,7 @@ interface TimerProps {
 
 export function Timer({ turnEndsAt, isActive }: TimerProps) {
   const [remaining, setRemaining] = useState(0)
+  const { t } = useT()
 
   useEffect(() => {
     if (!isActive || !turnEndsAt) {
@@ -32,7 +34,7 @@ export function Timer({ turnEndsAt, isActive }: TimerProps) {
   return (
     <div class={`timer ${urgent ? 'urgent' : ''}`}>
       <div class="timer-bar" style={{ width: `${pct}%` }} />
-      <span class="timer-text">{remaining}s</span>
+      <span class="timer-text">{remaining}{t('seconds')}</span>
     </div>
   )
 }

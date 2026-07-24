@@ -1,4 +1,5 @@
 import type { Player } from '@/types/game'
+import { useT } from '@/i18n/context'
 
 interface PlayerListProps {
   players: Player[]
@@ -7,6 +8,8 @@ interface PlayerListProps {
 }
 
 export function PlayerList({ players, currentTurn, myId }: PlayerListProps) {
+  const { t } = useT()
+
   return (
     <div class="player-list">
       {players.map(p => (
@@ -16,10 +19,10 @@ export function PlayerList({ players, currentTurn, myId }: PlayerListProps) {
         >
           <span class="player-name">
             {p.name}
-            {p.isHost ? ' (Host)' : ''}
-            {p.id === myId ? ' (You)' : ''}
+            {p.isHost ? ` ${t('host')}` : ''}
+            {p.id === myId ? ` ${t('you')}` : ''}
           </span>
-          <span class="player-score">{p.points} pts</span>
+          <span class="player-score">{p.points} {t('pts')}</span>
         </div>
       ))}
     </div>

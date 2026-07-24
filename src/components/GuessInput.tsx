@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks'
+import { useT } from '@/i18n/context'
 
 interface GuessInputProps {
   disabled: boolean
@@ -7,6 +8,7 @@ interface GuessInputProps {
 
 export function GuessInput({ disabled, onGuess }: GuessInputProps) {
   const [value, setValue] = useState('')
+  const { t } = useT()
 
   const handleSubmit = (e: Event) => {
     e.preventDefault()
@@ -22,14 +24,14 @@ export function GuessInput({ disabled, onGuess }: GuessInputProps) {
         type="text"
         value={value}
         onInput={(e) => setValue((e.target as HTMLInputElement).value)}
-        placeholder="Guess a word or full answer..."
+        placeholder={t('guessPlaceholder')}
         disabled={disabled}
         autocomplete="off"
         autocapitalize="off"
         spellcheck={false}
       />
       <button type="submit" disabled={disabled || !value.trim()}>
-        Guess
+        {t('guess')}
       </button>
     </form>
   )

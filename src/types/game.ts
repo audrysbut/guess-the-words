@@ -13,15 +13,6 @@ export type Theme =
   | 'fictional_characters'
   | 'video_games'
 
-export const THEME_LABELS: Record<Theme, string> = {
-  movies: 'Movies',
-  actors: 'Actors',
-  famous_people: 'Famous People',
-  books: 'Books',
-  fictional_characters: 'Fictional Characters',
-  video_games: 'Video Games',
-}
-
 export const THEME_COLORS: Record<Theme, string> = {
   movies: '#e74c3c',
   actors: '#3498db',
@@ -51,10 +42,13 @@ export interface WordEntry {
   theme: Theme
 }
 
+export type Language = 'en' | 'lt'
+
 export interface GameConfig {
   totalRounds: number
   themes: Theme[]
   timeLimit: number
+  language: Language
 }
 
 export type GamePhase = 'lobby' | 'round_intro' | 'playing' | 'round_end' | 'game_over'

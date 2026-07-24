@@ -5,6 +5,7 @@ import { GuessInput } from '@/components/GuessInput'
 import { Timer } from '@/components/Timer'
 import { ThemeReveal } from '@/components/ThemeReveal'
 import type { GameState } from '@/types/game'
+import { useT } from '@/i18n/context'
 
 interface GameScreenProps {
   gameState: GameState
@@ -15,30 +16,32 @@ interface GameScreenProps {
 }
 
 export default function GameScreen({ gameState, playerId, onLetterGuess, onWordGuess, isSolo }: GameScreenProps) {
+  const { t } = useT()
   const sortedPlayers = [...gameState.players].sort((a, b) => b.points - a.points)
   const isMyTurn = gameState.currentTurn === playerId
   const phase = gameState.phase
+  const lang = gameState.config.language
 
   /* ====== Game Over ====== */
   if (phase === 'game_over') {
     const winner = sortedPlayers[0]
     return (
       <div class="page gameover-screen">
-        <h1 class="title" style="font-size: 2rem">Game Over!</h1>
+        <h1 class="title" style="font-size: 2rem">{t('gameOver')}</h1>
         <div class="card">
           {winner && (
             <div class="winner-announcement">
               <div class="trophy" style="font-size: 3rem; text-align: center">&#127942;</div>
-              <h2>{winner.name} wins!</h2>
-              <p>{winner.points} points total</p>
+              <h2>{winner.name} {t('wins')}</h2>
+              <p>{winner.points} {t('pointsTotal')}</p>
             </div>
           )}
           <div class="final-standings">
             {sortedPlayers.map((p, i) => (
               <div key={p.id} class={`standing-row ${i === 0 ? 'winner' : ''}`}>
                 <span class="rank">#{i + 1}</span>
-                <span class="name">{p.name}{p.id === playerId ? ' (You)' : ''}</span>
-                <span class="score">{p.points} pts</span>
+                <span class="name">{p.name}{p.id === playerId ? ` ${t('you')}` : ''}</span>
+                <span class="score">{p.points} {t('pts')}</span>
               </div>
             ))}
           </div>
@@ -51,12 +54,12 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
   if (phase === 'round_intro') {
     return (
       <div class="page round-intro">
-        <div class="round-number">Round {gameState.currentRound + 1} of {gameState.totalRounds}</div>
+        <div class="round-number">{t('roundOf', String(gameState.currentRound + 1), String(gameState.totalRounds))}</div>
         {gameState.theme && <ThemeReveal theme={gameState.theme} />}
         <div class="intro-word-preview">
           <WordDisplay gameState={gameState} />
         </div>
-        <div class="intro-hint">Get ready...</div>
+        <div class="intro-hint">{t('getReady')}</div>
       </div>
     )
   }
@@ -65,24 +68,24 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
   if (phase === 'round_end') {
     return (
       <div class="page round-end-page">
-        <h2>Round Over!</h2>
+        <h2>{t('roundOver')}</h2>
         {gameState.roundWinner && (
           <p class="winner-announce">
-            {gameState.players.find(p => p.id === gameState.roundWinner)?.name} got it!
+            {gameState.players.find(p => p.id === gameState.roundWinner)?.name} {t('gotIt')}
           </p>
         )}
         <div class="answer-reveal">
-          The answer was: <strong>{gameState.currentWord}</strong>
+          {t('theAnswerWas')} <strong>{gameState.currentWord}</strong>
         </div>
         <div class="scores-preview">
           {sortedPlayers.map(p => (
             <div key={p.id} class={`score-row ${p.id === playerId ? 'current' : ''}`}>
-              <span class="name">{p.name}{p.id === playerId ? ' (You)' : ''}</span>
-              <span class="points">{p.points} pts</span>
+              <span class="name">{p.name}{p.id === playerId ? ` ${t('you')}` : ''}</span>
+              <span class="points">{p.points} {t('pts')}</span>
             </div>
           ))}
         </div>
-        <p class="next-hint">Next round starting...</p>
+        <p class="next-hint">{t('nextRoundStarting')}</p>
       </div>
     )
   }
@@ -94,9 +97,9 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
         {sortedPlayers.map(p => (
           <div key={p.id} class={`player-item ${p.id === gameState.currentTurn ? 'active-turn' : ''} ${p.id === playerId ? 'me' : ''}`}>
             <span class="player-name">
-              {p.name}{p.id === playerId ? ' (You)' : ''}
+              {p.name}{p.id === playerId ? ` ${t('you')}` : ''}
             </span>
-            <span class="player-score">{p.points} pts</span>
+            <span class="player-score">{p.points} {t('pts')}</span>
           </div>
         ))}
         {!isSolo && (
@@ -106,7 +109,7 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
 
       <div class="game-main">
         <div class="game-header">
-          <span class="round-label">Round {gameState.currentRound + 1}/{gameState.totalRounds}</span>
+          <span class="round-label">{t('roundOf', String(gameState.currentRound + 1), String(gameState.totalRounds))}</span>
           {gameState.theme && <ThemeReveal theme={gameState.theme} />}
         </div>
 
@@ -118,6 +121,7 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
               guessedLetters={gameState.guessedLetters}
               disabled={!isMyTurn && !isSolo}
               onGuess={onLetterGuess}
+              lang={lang}
             />
             <GuessInput
               disabled={!isMyTurn && !isSolo}
@@ -128,7 +132,7 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
 
         {!isMyTurn && !isSolo && phase === 'playing' && (
           <div class="waiting-turn">
-            Waiting for {gameState.players.find(p => p.id === gameState.currentTurn)?.name ?? 'next player'}...
+            {t('waitingFor', gameState.players.find(p => p.id === gameState.currentTurn)?.name ?? '...')}
           </div>
         )}
       </div>
