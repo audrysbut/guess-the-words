@@ -199,8 +199,9 @@ export default function App() {
     startTurnTimer(updated)
   }
 
-  const handlePeerMessage = useCallback((message: PeerMessage, senderId: string) => {
-    if (message.type === 'join' && isHost) {
+  const handlePeerMessage = (message: PeerMessage, senderId: string) => {
+    const host = managerRef.current?.isHost ?? false
+    if (message.type === 'join' && host) {
       const newPlayer: Player = { id: senderId, name: message.name, points: 0, isHost: false }
       setGameState((prev: GameState | null) => {
         if (!prev) return prev
@@ -219,33 +220,33 @@ export default function App() {
         return [...prev, newPlayer]
       })
     }
-    if (message.type === 'guess_letter' && isHost) {
+    if (message.type === 'guess_letter' && host) {
       handleHostLetterGuess(message.letter)
     }
-    if (message.type === 'guess_word' && isHost) {
+    if (message.type === 'guess_word' && host) {
       handleHostWordGuess(message.word)
     }
-    if (message.type === 'state_sync' && !isHost) {
+    if (message.type === 'state_sync' && !host) {
       setGameState(message.state)
       setPlayers(message.state.players)
       if (message.state.phase !== 'lobby') {
         setScreen('game')
       }
     }
-    if (message.type === 'player-joined' && !isHost) {
+    if (message.type === 'player-joined' && !host) {
       setPlayers((prev: Player[]) => {
         if (prev.some(p => p.id === message.player.id)) return prev
         return [...prev, message.player]
       })
     }
-    if (message.type === 'player-left' && isHost) {
+    if (message.type === 'player-left' && host) {
       setGameState((prev: GameState | null) => {
         if (!prev) return prev
         return { ...prev, players: prev.players.filter(p => p.id !== message.playerId) }
       })
       setPlayers((prev: Player[]) => prev.filter(p => p.id !== message.playerId))
     }
-  }, [isHost])
+  }
 
   /* ====== Room management ====== */
 
