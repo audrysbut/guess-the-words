@@ -650,13 +650,12 @@ input:focus, select:focus {
   background: var(--surface2);
   border: 1px solid transparent;
   transition: all 0.2s;
-  position: relative;
 }
 
 .sb-row.active-turn {
-  border-color: var(--primary);
-  background: rgba(124, 92, 252, 0.12);
-  box-shadow: 0 0 0 1px rgba(124, 92, 252, 0.2);
+  background: rgba(46, 204, 113, 0.15);
+  border-color: var(--correct);
+  box-shadow: 0 0 0 1px rgba(46, 204, 113, 0.25);
 }
 
 .sb-row.me {
@@ -664,7 +663,7 @@ input:focus, select:focus {
 }
 
 .sb-row.me.active-turn {
-  background: rgba(124, 92, 252, 0.15);
+  background: rgba(46, 204, 113, 0.2);
 }
 
 .sb-col-player {
@@ -684,17 +683,7 @@ input:focus, select:focus {
   text-align: right;
 }
 
-.sb-turn-badge {
-  font-size: 0.6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: var(--primary);
-  color: white;
-  animation: pulse 1.5s ease infinite;
-}
+
 
 .game-main {
   flex: 1;

@@ -107,7 +107,6 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
                   {p.name}{p.id === playerId ? ` ${t('you')}` : ''}
                 </span>
                 <span class="sb-col-pts">{p.points}</span>
-                {isTurn && <span class="sb-turn-badge">{t('guess')}</span>}
               </div>
             )
           })}
