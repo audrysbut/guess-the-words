@@ -30,10 +30,10 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
   if (initialRoomId) {
     return (
       <div class="page home-screen">
-        <h1 class="title">WordWeave</h1>
+        <h1 class="title">🧩 WordWeave</h1>
         <p class="subtitle">Join Game</p>
         <div class="card">
-          <label for="join-name">Your Name</label>
+          <label for="join-name">Your Name:</label>
           <input
             id="join-name"
             type="text"
@@ -54,10 +54,10 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
 
   return (
     <div class="page home-screen">
-      <h1 class="title">WordWeave</h1>
+      <h1 class="title">🧩 WordWeave</h1>
       <p class="subtitle">Guess the words, weave your way to victory!</p>
       <div class="card">
-        <label for="menu-name">Your Name</label>
+        <label for="menu-name">Your Name:</label>
         <input
           id="menu-name"
           type="text"

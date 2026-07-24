@@ -86,16 +86,6 @@ html, body {
   background: var(--border);
 }
 
-.btn-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.btn-row .btn {
-  flex: 1;
-}
-
 /* Inputs */
 input, select {
   background: var(--surface2);
@@ -114,202 +104,180 @@ input:focus, select:focus {
 }
 
 /* ====== HOME ====== */
-.home {
+.home-screen {
   text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(124, 92, 252, 0.08) 0%, transparent 60%);
 }
 
-.home-content {
-  max-width: 400px;
-  width: 100%;
-}
-
-.title {
+.home-screen .title {
   font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--primary), #e74c3c);
+  background: linear-gradient(135deg, var(--primary) 0%, #e74c3c 50%, var(--primary) 100%);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 8px;
+  letter-spacing: -1px;
 }
 
-.subtitle {
+.home-screen .subtitle {
   color: var(--text-dim);
   margin-bottom: 32px;
+  font-size: 1.05rem;
 }
 
-.name-input {
-  margin-bottom: 16px;
+.home-screen .card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s, border-color 0.3s;
 }
 
-.name-input input {
+.home-screen .card:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(124, 92, 252, 0.1);
+}
+
+.home-screen .card label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.home-screen .card input {
   width: 100%;
   text-align: center;
   font-size: 1.1rem;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.home-actions {
+.home-screen .card input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.15);
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.btn-row .btn {
+  flex: 1;
+  padding: 12px 8px;
+  font-size: 0.95rem;
+}
+
+.error {
+  color: var(--wrong);
+  margin-bottom: 0;
+  padding: 8px 12px;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+/* ====== LOBBY ====== */
+.lobby-screen {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.lobby-screen .card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.join-section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-dim);
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-.code-input {
-  text-align: center;
-  letter-spacing: 4px;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-}
-
-.error {
-  color: var(--wrong);
-  margin-bottom: 12px;
-  padding: 8px 12px;
-  background: rgba(231, 76, 60, 0.1);
-  border-radius: var(--radius);
-  font-size: 0.9rem;
-}
-
-/* ====== LOBBY ====== */
-.lobby {
-  justify-content: flex-start;
-  padding-top: 40px;
-}
-
-.lobby-content {
-  max-width: 500px;
-  width: 100%;
-}
-
-.lobby-content h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.room-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  margin-bottom: 20px;
+.lobby-screen .card h2 {
+  font-size: 1.4rem;
 }
 
 .player-count {
   color: var(--text-dim);
-}
-
-.config-section {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.config-section h3 {
-  margin-bottom: 16px;
-  font-size: 1rem;
-  color: var(--text-dim);
-}
-
-.config-row {
-  margin-bottom: 14px;
-}
-
-.config-row label {
-  display: block;
-  margin-bottom: 6px;
   font-size: 0.9rem;
-  color: var(--text-dim);
 }
 
-.config-row select {
-  width: 100%;
-}
-
-.theme-toggles {
+.lobby-screen .player-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lobby-screen .player-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-radius: var(--radius);
+}
+
+.player-item .player-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--correct);
+  flex-shrink: 0;
+}
+
+.player-item .player-name {
+  flex: 1;
+  text-align: left;
+}
+
+.host-badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+.lobby-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.invite-row {
+  display: flex;
   gap: 8px;
 }
 
-.theme-chip {
-  padding: 6px 14px;
-  border: 2px solid var(--border);
-  border-radius: 20px;
-  background: transparent;
-  color: var(--text-dim);
+.invite-input {
+  flex: 1;
+  font-size: 0.8rem;
+  padding: 8px 12px;
   cursor: pointer;
-  font-size: 0.85rem;
-  font-family: var(--font);
-  transition: all 0.2s;
 }
 
-.theme-chip.active {
-  background: rgba(124, 92, 252, 0.1);
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.config-section > .btn {
-  width: 100%;
-  margin-top: 8px;
-}
-
-.waiting {
-  text-align: center;
-  padding: 20px;
+.waiting-text {
   color: var(--text-dim);
-}
-
-.players-section {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.players-section h3 {
-  margin-bottom: 12px;
-  font-size: 1rem;
-  color: var(--text-dim);
-}
-
-.player-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--surface2);
-}
-
-.player-item:last-child {
-  border-bottom: none;
-}
-
-.player-item.me {
-  color: var(--primary);
+  font-size: 0.95rem;
 }
 
 /* ====== ROUND INTRO ====== */
