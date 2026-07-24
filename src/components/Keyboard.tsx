@@ -14,10 +14,10 @@ const EN_ROWS = [
 ]
 
 const LT_ROWS = [
+  ['Ą', 'Č', 'Ę', 'Ė', 'Į', 'Š', 'Ų', 'Ū', 'Ž'],
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
   ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
   ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
-  ['Ą', 'Č', 'Ę', 'Ė', 'Į', 'Š', 'Ų', 'Ū', 'Ž'],
 ]
 
 export function Keyboard({ guessedLetters, disabled, onGuess, lang }: KeyboardProps) {
