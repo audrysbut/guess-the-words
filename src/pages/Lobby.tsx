@@ -59,6 +59,19 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
     }
   }, [inviteUrl, isHost])
 
+  const shareLink = async () => {
+    if (!navigator.share) return
+    try {
+      await navigator.share({
+        title: 'Atspėk Žodžius',
+        text: t('joinGame'),
+        url: inviteUrl,
+      })
+    } catch {
+      // user cancelled
+    }
+  }
+
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(inviteUrl)
@@ -92,6 +105,9 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
             <div class="invite-row">
               <input type="text" readOnly value={inviteUrl} class="invite-input" onClick={e => (e.target as HTMLInputElement).select()} />
               <button class="btn btn-accent" onClick={copyLink}>{t('copyLink')}</button>
+              {typeof navigator.share === 'function' && (
+                <button class="btn btn-primary" onClick={shareLink}>{t('share')}</button>
+              )}
             </div>
             <button class="btn btn-primary btn-large" onClick={onStartGame}>
               {t('startGame')}

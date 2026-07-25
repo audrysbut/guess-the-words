@@ -47,6 +47,7 @@ const en: Translations = {
   playerCount_one: 'player joined',
   playerCount_other: 'players joined',
   nfcActive: 'NFC active — touch to join',
+  share: 'Share',
 }
 
 export default en
