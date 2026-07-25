@@ -2,6 +2,8 @@ import { useState } from 'preact/hooks'
 import type { Player } from '@/types/game'
 import { useT } from '@/i18n/context'
 
+const isShareSupported = typeof navigator.share === 'function' && /Mobi|Android/i.test(navigator.userAgent)
+
 interface LobbyProps {
   players: Player[]
   isHost: boolean
@@ -60,7 +62,7 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
             <input type="text" readOnly value={inviteUrl} class="invite-input" onClick={e => (e.target as HTMLInputElement).select()} />
             <div class="invite-row">
               <button class="btn btn-accent" onClick={copyLink} style="flex:1">{t('copyLink')}</button>
-              {typeof navigator.share === 'function' && (
+              {isShareSupported && (
                 <button class="btn btn-primary" onClick={shareLink} style="flex:1">{t('share')}</button>
               )}
             </div>
