@@ -396,6 +396,11 @@ input:focus, select:focus {
   color: transparent;
 }
 
+.word-token {
+  display: flex;
+  gap: inherit;
+}
+
 .word-space {
   width: 20px;
 }

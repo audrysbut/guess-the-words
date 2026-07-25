@@ -47,5 +47,4 @@
 
 ## Conventions
 - No tests — verify with `npm run build`
-- Postbuild triggers desktop notification via `scripts/notify.sh`
 - Do not commit or push unless the user explicitly requests it

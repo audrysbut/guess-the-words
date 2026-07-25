@@ -7,10 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "postbuild": "bash scripts/notify.sh 'Guess the Words' 'Build complete'",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist",
-    "notify": "bash scripts/notify.sh 'Guess the Words' 'Task complete'"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "peerjs": "^1.5.4",

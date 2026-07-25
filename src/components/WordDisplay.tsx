@@ -1,3 +1,4 @@
+import type { ComponentChildren } from 'preact'
 import type { GameState } from '@/types/game'
 
 interface WordDisplayProps {
@@ -8,48 +9,40 @@ export function WordDisplay({ gameState }: WordDisplayProps) {
   const { currentWord, guessedLetters, revealedTokens, currentTokens } = gameState
 
   const revealedSet = new Set(guessedLetters.map(l => l.toLowerCase()))
+  const isLetter = /\p{L}/u
 
-  const letterIndexes: { char: string; revealed: boolean; isSpace: boolean }[] = []
+  let tokens: { text: string; revealed: boolean }[]
 
   if (currentTokens.length > 1) {
-    for (let ti = 0; ti < currentTokens.length; ti++) {
-      if (ti > 0) {
-        letterIndexes.push({ char: ' ', revealed: true, isSpace: true })
-      }
-      const token = currentTokens[ti]
-      const tokenRevealed = revealedTokens[ti]
-      for (const char of token) {
-        const lower = char.toLowerCase()
-        const isLetter = /[a-zA-Z]/.test(char)
-        const revealed = tokenRevealed || (isLetter && revealedSet.has(lower))
-        letterIndexes.push({ char, revealed, isSpace: false })
-      }
-    }
+    tokens = currentTokens.map((t, i) => ({ text: t, revealed: revealedTokens[i] }))
   } else {
-    for (const char of currentWord) {
-      if (char === ' ') {
-        letterIndexes.push({ char: ' ', revealed: true, isSpace: true })
-      } else {
-        const lower = char.toLowerCase()
-        const isLetter = /[a-zA-Z]/.test(char)
-        const revealed = isLetter && revealedSet.has(lower)
-        letterIndexes.push({ char, revealed, isSpace: false })
-      }
-    }
+    const overallRevealed = currentTokens.length === 1 ? revealedTokens[0] : false
+    tokens = currentWord.split(' ').map(t => ({ text: t, revealed: overallRevealed }))
   }
 
-  return (
-    <div class="word-display">
-      {letterIndexes.map((item, i) => {
-        if (item.isSpace) {
-          return <span key={i} class="word-space" />
-        }
-        return (
-          <span key={i} class={`letter-tile ${item.revealed ? 'revealed' : 'hidden'}`}>
-            {item.revealed ? item.char : ''}
+  const elements: ComponentChildren[] = []
+
+  for (let ti = 0; ti < tokens.length; ti++) {
+    if (ti > 0) {
+      elements.push(<span key={`s-${ti}`} class="word-space" />)
+    }
+
+    const letters = [...tokens[ti].text].map((char, ci) => {
+      const lower = char.toLowerCase()
+      const revealed = tokens[ti].revealed || (isLetter.test(char) && revealedSet.has(lower))
+      return { char, revealed, key: `t${ti}-c${ci}` }
+    })
+
+    elements.push(
+      <span key={`t-${ti}`} class="word-token">
+        {letters.map(l => (
+          <span key={l.key} class={`letter-tile ${l.revealed ? 'revealed' : 'hidden'}`}>
+            {l.revealed ? l.char : ''}
           </span>
-        )
-      })}
-    </div>
-  )
+        ))}
+      </span>,
+    )
+  }
+
+  return <div class="word-display">{elements}</div>
 }
