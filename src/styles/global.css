@@ -364,7 +364,8 @@ input:focus, select:focus {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  gap: clamp(4px, 0.8vw, 10px);
+  row-gap: clamp(4px, 0.8vw, 10px);
+  column-gap: clamp(24px, 3vw, 40px);
   padding: 8px;
   flex: 1 1 auto;
   max-height: 45vh;
@@ -398,11 +399,7 @@ input:focus, select:focus {
 
 .word-token {
   display: flex;
-  gap: inherit;
-}
-
-.word-space {
-  width: 20px;
+  gap: clamp(4px, 0.8vw, 10px);
 }
 
 @keyframes reveal {

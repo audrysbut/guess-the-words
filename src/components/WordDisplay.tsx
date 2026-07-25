@@ -1,4 +1,3 @@
-import type { ComponentChildren } from 'preact'
 import type { GameState } from '@/types/game'
 
 interface WordDisplayProps {
@@ -20,29 +19,21 @@ export function WordDisplay({ gameState }: WordDisplayProps) {
     tokens = currentWord.split(' ').map(t => ({ text: t, revealed: overallRevealed }))
   }
 
-  const elements: ComponentChildren[] = []
-
-  for (let ti = 0; ti < tokens.length; ti++) {
-    if (ti > 0) {
-      elements.push(<span key={`s-${ti}`} class="word-space" />)
-    }
-
-    const letters = [...tokens[ti].text].map((char, ci) => {
-      const lower = char.toLowerCase()
-      const revealed = tokens[ti].revealed || (isLetter.test(char) && revealedSet.has(lower))
-      return { char, revealed, key: `t${ti}-c${ci}` }
-    })
-
-    elements.push(
-      <span key={`t-${ti}`} class="word-token">
-        {letters.map(l => (
-          <span key={l.key} class={`letter-tile ${l.revealed ? 'revealed' : 'hidden'}`}>
-            {l.revealed ? l.char : ''}
-          </span>
-        ))}
-      </span>,
-    )
-  }
-
-  return <div class="word-display">{elements}</div>
+  return (
+    <div class="word-display">
+      {tokens.map((token, ti) => (
+        <span key={`t-${ti}`} class="word-token">
+          {[...token.text].map((char, ci) => {
+            const lower = char.toLowerCase()
+            const revealed = token.revealed || (isLetter.test(char) && revealedSet.has(lower))
+            return (
+              <span key={`t${ti}-c${ci}`} class={`letter-tile ${revealed ? 'revealed' : 'hidden'}`}>
+                {revealed ? char : ''}
+              </span>
+            )
+          })}
+        </span>
+      ))}
+    </div>
+  )
 }
