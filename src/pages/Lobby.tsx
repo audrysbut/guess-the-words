@@ -37,8 +37,11 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
         try {
           const reader = new NDEFReader()
           await reader.write({
-            records: [{ recordType: 'url', data: inviteUrl }],
-          }, { overwrite: true })
+            records: [
+              { recordType: 'url', data: inviteUrl },
+              { recordType: 'text', data: inviteUrl },
+            ],
+          })
           if (cancelled) break
           setNfcActive(true)
         } catch {

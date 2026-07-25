@@ -27,7 +27,7 @@ interface NDEFMessage {
 interface NDEFRecord {
   recordType: string
   encoding?: string
-  data: ArrayBuffer
+  data: DataView
   lang?: string
   record?: NDEFRecord
 }

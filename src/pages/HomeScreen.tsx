@@ -53,7 +53,17 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, onNf
           for (const record of event.message.records) {
             if (record.recordType === 'url') {
               const decoder = new TextDecoder()
-              detectedUrl = decoder.decode(record.data)
+              const raw = decoder.decode(record.data)
+              if (raw.startsWith('http://') || raw.startsWith('https://')) {
+                detectedUrl = raw
+              } else {
+                const buf = record.data.buffer
+                const offset = record.data.byteOffset
+                const len = record.data.byteLength
+                const code = new Uint8Array(buf, offset, 1)[0]
+                const prefix = code === 0x03 ? 'http://' : code === 0x04 ? 'https://' : ''
+                detectedUrl = prefix + decoder.decode(new Uint8Array(buf, offset + 1, len - 1))
+              }
               break
             }
             if (record.recordType === 'text') {
