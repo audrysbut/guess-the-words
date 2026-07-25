@@ -57,11 +57,11 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
         </div>
         {isHost && (
           <div class="lobby-actions">
+            <input type="text" readOnly value={inviteUrl} class="invite-input" onClick={e => (e.target as HTMLInputElement).select()} />
             <div class="invite-row">
-              <input type="text" readOnly value={inviteUrl} class="invite-input" onClick={e => (e.target as HTMLInputElement).select()} />
-              <button class="btn btn-accent" onClick={copyLink}>{t('copyLink')}</button>
+              <button class="btn btn-accent" onClick={copyLink} style="flex:1">{t('copyLink')}</button>
               {typeof navigator.share === 'function' && (
-                <button class="btn btn-primary" onClick={shareLink}>{t('share')}</button>
+                <button class="btn btn-primary" onClick={shareLink} style="flex:1">{t('share')}</button>
               )}
             </div>
             <button class="btn btn-primary btn-large" onClick={onStartGame}>
