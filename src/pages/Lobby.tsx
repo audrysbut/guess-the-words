@@ -15,15 +15,18 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
   const inviteUrl = `${window.location.origin}/guess-the-words/?room=${roomId}`
 
   const shareLink = async () => {
-    if (!navigator.share) return
-    try {
-      await navigator.share({
-        title: 'Atspėk Žodžius',
-        text: t('joinGame'),
-        url: inviteUrl,
-      })
-    } catch {
-      // user cancelled
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Atspėk Žodžius',
+          text: t('joinGame'),
+          url: inviteUrl,
+        })
+      } catch {
+        // user cancelled
+      }
+    } else {
+      await copyLink()
     }
   }
 
@@ -60,9 +63,7 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
             <input type="text" readOnly value={inviteUrl} class="invite-input" onClick={e => (e.target as HTMLInputElement).select()} />
             <div class="invite-row">
               <button class="btn btn-accent" onClick={copyLink} style="flex:1">{t('copyLink')}</button>
-              {typeof navigator.share === 'function' && (
-                <button class="btn btn-primary" onClick={shareLink} style="flex:1">{t('share')}</button>
-              )}
+              <button class="btn btn-primary" onClick={shareLink} style="flex:1">{t('share')}</button>
             </div>
             <button class="btn btn-primary btn-large" onClick={onStartGame}>
               {t('startGame')}
