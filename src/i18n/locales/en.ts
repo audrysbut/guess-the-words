@@ -46,7 +46,6 @@ const en: Translations = {
   switchLanguage: 'Switch to Lithuanian',
   playerCount_one: 'player joined',
   playerCount_other: 'players joined',
-  nfcActive: 'NFC active — touch to join',
   share: 'Share',
 }
 

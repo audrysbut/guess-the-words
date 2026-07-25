@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'preact/hooks'
+import { useState, useEffect, useRef } from 'preact/hooks'
 import { PeerManager } from '@/webrtc/peer-manager'
 import HomeScreen from '@/pages/HomeScreen'
 import Lobby from '@/pages/Lobby'
@@ -513,10 +513,6 @@ export default function App() {
 
   /* ====== Language Switcher ====== */
 
-  const handleNfcRoomDetected = useCallback((roomId: string) => {
-    setInitialRoomId(roomId)
-  }, [])
-
   const toggleLang = () => {
     setLang(prev => prev === 'lt' ? 'en' : 'lt')
   }
@@ -531,7 +527,6 @@ export default function App() {
         onStartSolo={handleStartSolo}
         onCreateRoom={handleCreateRoom}
         onJoinRoom={handleJoinRoom}
-        onNfcRoomDetected={handleNfcRoomDetected}
         error={error}
         initialRoomId={initialRoomId ?? undefined}
         lang={lang}

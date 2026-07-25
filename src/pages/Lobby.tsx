@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from 'preact/hooks'
+import { useState } from 'preact/hooks'
 import type { Player } from '@/types/game'
 import { useT } from '@/i18n/context'
-
-const isNfcSupported = typeof window !== 'undefined' && 'NDEFReader' in window
 
 interface LobbyProps {
   players: Player[]
@@ -12,52 +10,9 @@ interface LobbyProps {
   error?: string | null
 }
 
-function NfcIcon() {
-  return (
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-      <path d="M7.5 15.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zM15 11c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" opacity="0.5"/>
-    </svg>
-  )
-}
-
 export default function Lobby({ players, isHost, roomId, onStartGame, error }: LobbyProps) {
   const { t } = useT()
   const inviteUrl = `${window.location.origin}/guess-the-words/?room=${roomId}`
-  const [nfcActive, setNfcActive] = useState(false)
-  const nfcActiveRef = useRef(false)
-
-  useEffect(() => {
-    if (!isNfcSupported || !isHost) return
-
-    let cancelled = false
-
-    const startNfcWrite = async () => {
-      while (!cancelled) {
-        try {
-          const reader = new NDEFReader()
-          await reader.write({
-            records: [
-              { recordType: 'url', data: inviteUrl },
-              { recordType: 'text', data: inviteUrl },
-            ],
-          })
-          if (cancelled) break
-          setNfcActive(true)
-        } catch {
-          if (cancelled) break
-          await new Promise(r => setTimeout(r, 2000))
-        }
-      }
-    }
-
-    startNfcWrite()
-
-    return () => {
-      cancelled = true
-      nfcActiveRef.current = false
-    }
-  }, [inviteUrl, isHost])
 
   const shareLink = async () => {
     if (!navigator.share) return
@@ -118,12 +73,6 @@ export default function Lobby({ players, isHost, roomId, onStartGame, error }: L
           <p class="waiting-text">{t('waitingForHost')}</p>
         )}
         {error && <p class="error">{error}</p>}
-        {isNfcSupported && isHost && (
-          <div class={`nfc-indicator ${nfcActive ? 'active' : ''}`} title={t('nfcActive')}>
-            <NfcIcon />
-            <span>{t('nfcActive')}</span>
-          </div>
-        )}
       </div>
     </div>
   )

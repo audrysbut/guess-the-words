@@ -46,7 +46,6 @@ export type TranslationKey =
   | 'switchLanguage'
   | 'playerCount_one'
   | 'playerCount_other'
-  | 'nfcActive'
   | 'share'
 
 export type Translations = Record<TranslationKey, string>

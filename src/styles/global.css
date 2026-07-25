@@ -811,38 +811,6 @@ input:focus, select:focus {
   justify-content: center;
 }
 
-/* ====== NFC ====== */
-.nfc-indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 16px;
-  color: var(--text-dim);
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-.nfc-indicator svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-.nfc-indicator.active {
-  opacity: 1;
-  color: var(--correct);
-}
-
-.nfc-indicator.active svg {
-  animation: nfc-pulse 2s ease-in-out infinite;
-}
-
-@keyframes nfc-pulse {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
   .game-page {
