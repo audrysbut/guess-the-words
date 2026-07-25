@@ -17,8 +17,9 @@ const DEFAULT_CONFIG: GameConfig = {
 }
 
 export default function App() {
-  const params = new URLSearchParams(window.location.search)
-  const initialRoomId = params.get('room')
+  const [initialRoomId, setInitialRoomId] = useState<string | null>(() => {
+    return new URLSearchParams(window.location.search).get('room')
+  })
   const managerRef = useRef<PeerManager | null>(null)
 
   const [lang, setLang] = useState<Language>(() => {
@@ -512,6 +513,10 @@ export default function App() {
 
   /* ====== Language Switcher ====== */
 
+  const handleNfcRoomDetected = useCallback((roomId: string) => {
+    setInitialRoomId(roomId)
+  }, [])
+
   const toggleLang = () => {
     setLang(prev => prev === 'lt' ? 'en' : 'lt')
   }
@@ -526,6 +531,7 @@ export default function App() {
         onStartSolo={handleStartSolo}
         onCreateRoom={handleCreateRoom}
         onJoinRoom={handleJoinRoom}
+        onNfcRoomDetected={handleNfcRoomDetected}
         error={error}
         initialRoomId={initialRoomId ?? undefined}
         lang={lang}

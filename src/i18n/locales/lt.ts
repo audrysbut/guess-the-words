@@ -46,6 +46,7 @@ const lt: Translations = {
   switchLanguage: 'Perjungti į anglų',
   playerCount_one: 'žaidėjas prisijungė',
   playerCount_other: 'žaidėjai prisijungė',
+  nfcActive: 'NFC aktyvus — prisilieskite, kad prisijungtumėte',
 }
 
 export default lt

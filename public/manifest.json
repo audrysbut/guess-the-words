@@ -1,0 +1,27 @@
+{
+  "name": "Atspėk Žodžius",
+  "short_name": "Atspėk Žodžius",
+  "description": "Multiplayer word guessing game",
+  "start_url": "/guess-the-words/",
+  "display": "standalone",
+  "background_color": "#1e1b4b",
+  "theme_color": "#6366f1",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/guess-the-words/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/guess-the-words/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/guess-the-words/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
