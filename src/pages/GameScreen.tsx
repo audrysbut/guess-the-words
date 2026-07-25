@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks'
+import { useState, useEffect, useRef } from 'preact/hooks'
 import { WordDisplay } from '@/components/WordDisplay'
 import { Keyboard } from '@/components/Keyboard'
 import { GuessInput } from '@/components/GuessInput'
@@ -21,6 +21,34 @@ export default function GameScreen({ gameState, playerId, onLetterGuess, onWordG
   const isMyTurn = gameState.currentTurn === playerId
   const phase = gameState.phase
   const lang = gameState.config.language
+
+  const onLetterGuessRef = useRef(onLetterGuess)
+  onLetterGuessRef.current = onLetterGuess
+  const guessedLettersRef = useRef(gameState.guessedLetters)
+  guessedLettersRef.current = gameState.guessedLetters
+
+  useEffect(() => {
+    if (phase !== 'playing') return
+    if (!isMyTurn && !isSolo) return
+
+    const handler = (e: KeyboardEvent) => {
+      const active = document.activeElement
+      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) return
+      if (e.ctrlKey || e.altKey || e.metaKey) return
+      if (e.key.length !== 1) return
+      if (!/\p{L}/u.test(e.key)) return
+
+      const letter = e.key.toUpperCase()
+      const guessed = new Set(guessedLettersRef.current.map(l => l.toUpperCase()))
+      if (guessed.has(letter)) return
+
+      e.preventDefault()
+      onLetterGuessRef.current(letter)
+    }
+
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [phase, isMyTurn, isSolo])
 
   /* ====== Game Over ====== */
   if (phase === 'game_over') {
