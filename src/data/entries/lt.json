@@ -1,0 +1,3458 @@
+{
+  "movies": [
+    {
+      "answer": "Pabėgimas iš Šoušenko",
+      "tokens": [
+        "Pabėgimas",
+        "iš",
+        "Šoušenko"
+      ]
+    },
+    {
+      "answer": "Krikštatėvis",
+      "tokens": [
+        "Krikštatėvis"
+      ]
+    },
+    {
+      "answer": "Tamsos riteris",
+      "tokens": [
+        "Tamsos",
+        "riteris"
+      ]
+    },
+    {
+      "answer": "Bulvarinis skaitalas",
+      "tokens": [
+        "Bulvarinis",
+        "skaitalas"
+      ]
+    },
+    {
+      "answer": "Šindlerio sąrašas",
+      "tokens": [
+        "Šindlerio",
+        "sąrašas"
+      ]
+    },
+    {
+      "answer": "Forestas Gampas",
+      "tokens": [
+        "Forestas",
+        "Gampas"
+      ]
+    },
+    {
+      "answer": "Pradžia",
+      "tokens": [
+        "Pradžia"
+      ]
+    },
+    {
+      "answer": "Kovos klubas",
+      "tokens": [
+        "Kovos",
+        "klubas"
+      ]
+    },
+    {
+      "answer": "Matrica",
+      "tokens": [
+        "Matrica"
+      ]
+    },
+    {
+      "answer": "Geri vyrukai",
+      "tokens": [
+        "Geri",
+        "vyrukai"
+      ]
+    },
+    {
+      "answer": "Žvaigždžių karai",
+      "tokens": [
+        "Žvaigždžių",
+        "karai"
+      ]
+    },
+    {
+      "answer": "Juros periodo parkas",
+      "tokens": [
+        "Juros",
+        "periodo",
+        "parkas"
+      ]
+    },
+    {
+      "answer": "Atgal į ateitį",
+      "tokens": [
+        "Atgal",
+        "į",
+        "ateitį"
+      ]
+    },
+    {
+      "answer": "Avinėlių tylėjimas",
+      "tokens": [
+        "Avinėlių",
+        "tylėjimas"
+      ]
+    },
+    {
+      "answer": "Gelbstint eilinį Rajaną",
+      "tokens": [
+        "Gelbstint",
+        "eilinį",
+        "Rajaną"
+      ]
+    },
+    {
+      "answer": "Žalioji mylia",
+      "tokens": [
+        "Žalioji",
+        "mylia"
+      ]
+    },
+    {
+      "answer": "Gladiatorius",
+      "tokens": [
+        "Gladiatorius"
+      ]
+    },
+    {
+      "answer": "Infiltruoti",
+      "tokens": [
+        "Infiltruoti"
+      ]
+    },
+    {
+      "answer": "Plaktukas",
+      "tokens": [
+        "Plaktukas"
+      ]
+    },
+    {
+      "answer": "Parazitas",
+      "tokens": [
+        "Parazitas"
+      ]
+    },
+    {
+      "answer": "Tarp žvaigždžių",
+      "tokens": [
+        "Tarp",
+        "žvaigždžių"
+      ]
+    },
+    {
+      "answer": "Koko",
+      "tokens": [
+        "Koko"
+      ]
+    },
+    {
+      "answer": "Stebuklingi Šihiros nuotykiai Dvasių pasaulyje",
+      "tokens": [
+        "Stebuklingi",
+        "Šihiros",
+        "nuotykiai",
+        "Dvasių",
+        "pasaulyje"
+      ]
+    },
+    {
+      "answer": "Pašėlęs Maksas Įtūžio kelias",
+      "tokens": [
+        "Pašėlęs",
+        "Maksas",
+        "Įtūžio",
+        "kelias"
+      ]
+    },
+    {
+      "answer": "Didysis Budapešto viešbutis",
+      "tokens": [
+        "Didysis",
+        "Budapešto",
+        "viešbutis"
+      ]
+    },
+    {
+      "answer": "Žaislų istorija",
+      "tokens": [
+        "Žaislų",
+        "istorija"
+      ]
+    },
+    {
+      "answer": "Nasrai",
+      "tokens": [
+        "Nasrai"
+      ]
+    },
+    {
+      "answer": "Jausmų galia",
+      "tokens": [
+        "Jausmų",
+        "galia"
+      ]
+    },
+    {
+      "answer": "Liūtas karalius",
+      "tokens": [
+        "Liūtas",
+        "karalius"
+      ]
+    },
+    {
+      "answer": "Avataras",
+      "tokens": [
+        "Avataras"
+      ]
+    },
+    {
+      "answer": "Tadas Blinda",
+      "tokens": [
+        "Tadas",
+        "Blinda"
+      ]
+    },
+    {
+      "answer": "Redirecta",
+      "tokens": [
+        "Redirecta"
+      ]
+    },
+    {
+      "answer": "Miegančių drugelių tvirtovė",
+      "tokens": [
+        "Miegančių",
+        "drugelių",
+        "tvirtovė"
+      ]
+    },
+    {
+      "answer": "Sangailės vasara",
+      "tokens": [
+        "Sangailės",
+        "vasara"
+      ]
+    },
+    {
+      "answer": "Lošėjas",
+      "tokens": [
+        "Lošėjas"
+      ]
+    },
+    {
+      "answer": "Kitas mūsų miestas",
+      "tokens": [
+        "Kitas",
+        "mūsų",
+        "miestas"
+      ]
+    },
+    {
+      "answer": "Kai aš buvau žuvis",
+      "tokens": [
+        "Kai",
+        "aš",
+        "buvau",
+        "žuvis"
+      ]
+    },
+    {
+      "answer": "Krikštatėvis II",
+      "tokens": [
+        "Krikštatėvis",
+        "II"
+      ]
+    },
+    {
+      "answer": "Žiedų valdovas Žiedų brolija",
+      "tokens": [
+        "Žiedų",
+        "valdovas",
+        "Žiedų",
+        "brolija"
+      ]
+    },
+    {
+      "answer": "Žiedų valdovas Du bokštai",
+      "tokens": [
+        "Žiedų",
+        "valdovas",
+        "Du",
+        "bokštai"
+      ]
+    },
+    {
+      "answer": "Žiedų valdovas Karaliaus sugrįžimas",
+      "tokens": [
+        "Žiedų",
+        "valdovas",
+        "Karaliaus",
+        "sugrįžimas"
+      ]
+    },
+    {
+      "answer": "Prarastojo lobio ieškotojai",
+      "tokens": [
+        "Prarastojo",
+        "lobio",
+        "ieškotojai"
+      ]
+    },
+    {
+      "answer": "Prestižas",
+      "tokens": [
+        "Prestižas"
+      ]
+    },
+    {
+      "answer": "Septynios",
+      "tokens": [
+        "Septynios"
+      ]
+    },
+    {
+      "answer": "Įtariamieji",
+      "tokens": [
+        "Įtariamieji"
+      ]
+    },
+    {
+      "answer": "Drąsiaširdis",
+      "tokens": [
+        "Drąsiaširdis"
+      ]
+    },
+    {
+      "answer": "Titanikas",
+      "tokens": [
+        "Titanikas"
+      ]
+    },
+    {
+      "answer": "Socialinis tinklas",
+      "tokens": [
+        "Socialinis",
+        "tinklas"
+      ]
+    },
+    {
+      "answer": "Šalis seniams ne vieta",
+      "tokens": [
+        "Šalis",
+        "seniams",
+        "ne",
+        "vieta"
+      ]
+    },
+    {
+      "answer": "Fargo",
+      "tokens": [
+        "Fargo"
+      ]
+    },
+    {
+      "answer": "Didysis Lebovskis",
+      "tokens": [
+        "Didysis",
+        "Lebovskis"
+      ]
+    },
+    {
+      "answer": "Paskutinis kovotojas",
+      "tokens": [
+        "Paskutinis",
+        "kovotojas"
+      ]
+    },
+    {
+      "answer": "Terminatorius 2 Paskutinioji teismo diena",
+      "tokens": [
+        "Terminatorius",
+        "2",
+        "Paskutinioji",
+        "teismo",
+        "diena"
+      ]
+    },
+    {
+      "answer": "Svetimi",
+      "tokens": [
+        "Svetimi"
+      ]
+    },
+    {
+      "answer": "Bėgantis ašmenimis",
+      "tokens": [
+        "Bėgantis",
+        "ašmenimis"
+      ]
+    },
+    {
+      "answer": "Švytėjimas",
+      "tokens": [
+        "Švytėjimas"
+      ]
+    },
+    {
+      "answer": "Mechaninis apelsinas",
+      "tokens": [
+        "Mechaninis",
+        "apelsinas"
+      ]
+    },
+    {
+      "answer": "Apokalipsė dabar",
+      "tokens": [
+        "Apokalipsė",
+        "dabar"
+      ]
+    },
+    {
+      "answer": "Taksistas",
+      "tokens": [
+        "Taksistas"
+      ]
+    },
+    {
+      "answer": "Dingusi mergina",
+      "tokens": [
+        "Dingusi",
+        "mergina"
+      ]
+    },
+    {
+      "answer": "Vilko iš Volstryto",
+      "tokens": [
+        "Vilko",
+        "iš",
+        "Volstryto"
+      ]
+    },
+    {
+      "answer": "Django išlaisvintas",
+      "tokens": [
+        "Django",
+        "išlaisvintas"
+      ]
+    },
+    {
+      "answer": "Šunsnukiai",
+      "tokens": [
+        "Šunsnukiai"
+      ]
+    },
+    {
+      "answer": "Sugrįžėlis",
+      "tokens": [
+        "Sugrįžėlis"
+      ]
+    },
+    {
+      "answer": "La La Land",
+      "tokens": [
+        "La",
+        "La",
+        "Land"
+      ]
+    },
+    {
+      "answer": "Išeik",
+      "tokens": [
+        "Išeik"
+      ]
+    },
+    {
+      "answer": "Atvykimas",
+      "tokens": [
+        "Atvykimas"
+      ]
+    },
+    {
+      "answer": "Psichopatas",
+      "tokens": [
+        "Psichopatas"
+      ]
+    },
+    {
+      "answer": "Kasablanka",
+      "tokens": [
+        "Kasablanka"
+      ]
+    },
+    {
+      "answer": "Pilietis Keinas",
+      "tokens": [
+        "Pilietis",
+        "Keinas"
+      ]
+    },
+    {
+      "answer": "Skrydis virš gegutės lizdo",
+      "tokens": [
+        "Skrydis",
+        "virš",
+        "gegutės",
+        "lizdo"
+      ]
+    },
+    {
+      "answer": "Gerasis Vilas Hantingas",
+      "tokens": [
+        "Gerasis",
+        "Vilas",
+        "Hantingas"
+      ]
+    },
+    {
+      "answer": "Rokis",
+      "tokens": [
+        "Rokis"
+      ]
+    },
+    {
+      "answer": "Trumano šou",
+      "tokens": [
+        "Trumano",
+        "šou"
+      ]
+    },
+    {
+      "answer": "Ieškant Nemo",
+      "tokens": [
+        "Ieškant",
+        "Nemo"
+      ]
+    },
+    {
+      "answer": "Aukštyn",
+      "tokens": [
+        "Aukštyn"
+      ]
+    },
+    {
+      "answer": "Iš vidaus",
+      "tokens": [
+        "Iš",
+        "vidaus"
+      ]
+    },
+    {
+      "answer": "VOLS",
+      "tokens": [
+        "VOLS"
+      ]
+    },
+    {
+      "answer": "Monstrai",
+      "tokens": [
+        "Monstrai"
+      ]
+    },
+    {
+      "answer": "Nepaprastieji",
+      "tokens": [
+        "Nepaprastieji"
+      ]
+    },
+    {
+      "answer": "Ratačilis",
+      "tokens": [
+        "Ratačilis"
+      ]
+    },
+    {
+      "answer": "Moana",
+      "tokens": [
+        "Moana"
+      ]
+    },
+    {
+      "answer": "Zootopija",
+      "tokens": [
+        "Zootopija"
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "answer": "Tom Hanks",
+      "tokens": [
+        "Tom",
+        "Hanks"
+      ]
+    },
+    {
+      "answer": "Meryl Streep",
+      "tokens": [
+        "Meryl",
+        "Streep"
+      ]
+    },
+    {
+      "answer": "Leonardo DiCaprio",
+      "tokens": [
+        "Leonardo",
+        "DiCaprio"
+      ]
+    },
+    {
+      "answer": "Denzel Washington",
+      "tokens": [
+        "Denzel",
+        "Washington"
+      ]
+    },
+    {
+      "answer": "Cate Blanchett",
+      "tokens": [
+        "Cate",
+        "Blanchett"
+      ]
+    },
+    {
+      "answer": "Morgan Freeman",
+      "tokens": [
+        "Morgan",
+        "Freeman"
+      ]
+    },
+    {
+      "answer": "Scarlett Johansson",
+      "tokens": [
+        "Scarlett",
+        "Johansson"
+      ]
+    },
+    {
+      "answer": "Brad Pitt",
+      "tokens": [
+        "Brad",
+        "Pitt"
+      ]
+    },
+    {
+      "answer": "Natalie Portman",
+      "tokens": [
+        "Natalie",
+        "Portman"
+      ]
+    },
+    {
+      "answer": "Christian Bale",
+      "tokens": [
+        "Christian",
+        "Bale"
+      ]
+    },
+    {
+      "answer": "Jennifer Lawrence",
+      "tokens": [
+        "Jennifer",
+        "Lawrence"
+      ]
+    },
+    {
+      "answer": "Samuel L Jackson",
+      "tokens": [
+        "Samuel",
+        "L",
+        "Jackson"
+      ]
+    },
+    {
+      "answer": "Keanu Reeves",
+      "tokens": [
+        "Keanu",
+        "Reeves"
+      ]
+    },
+    {
+      "answer": "Emma Stone",
+      "tokens": [
+        "Emma",
+        "Stone"
+      ]
+    },
+    {
+      "answer": "Joaquin Phoenix",
+      "tokens": [
+        "Joaquin",
+        "Phoenix"
+      ]
+    },
+    {
+      "answer": "Viola Davis",
+      "tokens": [
+        "Viola",
+        "Davis"
+      ]
+    },
+    {
+      "answer": "Robert Downey Jr",
+      "tokens": [
+        "Robert",
+        "Downey",
+        "Jr"
+      ]
+    },
+    {
+      "answer": "Amy Adams",
+      "tokens": [
+        "Amy",
+        "Adams"
+      ]
+    },
+    {
+      "answer": "Anthony Hopkins",
+      "tokens": [
+        "Anthony",
+        "Hopkins"
+      ]
+    },
+    {
+      "answer": "Helena Bonham Carter",
+      "tokens": [
+        "Helena",
+        "Bonham",
+        "Carter"
+      ]
+    },
+    {
+      "answer": "Willem Dafoe",
+      "tokens": [
+        "Willem",
+        "Dafoe"
+      ]
+    },
+    {
+      "answer": "Rachel McAdams",
+      "tokens": [
+        "Rachel",
+        "McAdams"
+      ]
+    },
+    {
+      "answer": "Gary Oldman",
+      "tokens": [
+        "Gary",
+        "Oldman"
+      ]
+    },
+    {
+      "answer": "Saoirse Ronan",
+      "tokens": [
+        "Saoirse",
+        "Ronan"
+      ]
+    },
+    {
+      "answer": "Daniel Day Lewis",
+      "tokens": [
+        "Daniel",
+        "Day",
+        "Lewis"
+      ]
+    },
+    {
+      "answer": "Margot Robbie",
+      "tokens": [
+        "Margot",
+        "Robbie"
+      ]
+    },
+    {
+      "answer": "Idris Elba",
+      "tokens": [
+        "Idris",
+        "Elba"
+      ]
+    },
+    {
+      "answer": "Tilda Swinton",
+      "tokens": [
+        "Tilda",
+        "Swinton"
+      ]
+    },
+    {
+      "answer": "John Boyega",
+      "tokens": [
+        "John",
+        "Boyega"
+      ]
+    },
+    {
+      "answer": "Lupita Nyongo",
+      "tokens": [
+        "Lupita",
+        "Nyongo"
+      ]
+    },
+    {
+      "answer": "Humphrey Bogart",
+      "tokens": [
+        "Humphrey",
+        "Bogart"
+      ]
+    },
+    {
+      "answer": "Audrey Hepburn",
+      "tokens": [
+        "Audrey",
+        "Hepburn"
+      ]
+    },
+    {
+      "answer": "Marlon Brando",
+      "tokens": [
+        "Marlon",
+        "Brando"
+      ]
+    },
+    {
+      "answer": "Katharine Hepburn",
+      "tokens": [
+        "Katharine",
+        "Hepburn"
+      ]
+    },
+    {
+      "answer": "James Stewart",
+      "tokens": [
+        "James",
+        "Stewart"
+      ]
+    },
+    {
+      "answer": "Cary Grant",
+      "tokens": [
+        "Cary",
+        "Grant"
+      ]
+    },
+    {
+      "answer": "Jack Nicholson",
+      "tokens": [
+        "Jack",
+        "Nicholson"
+      ]
+    },
+    {
+      "answer": "Al Pacino",
+      "tokens": [
+        "Al",
+        "Pacino"
+      ]
+    },
+    {
+      "answer": "Robert De Niro",
+      "tokens": [
+        "Robert",
+        "De",
+        "Niro"
+      ]
+    },
+    {
+      "answer": "Clint Eastwood",
+      "tokens": [
+        "Clint",
+        "Eastwood"
+      ]
+    },
+    {
+      "answer": "Dustin Hoffman",
+      "tokens": [
+        "Dustin",
+        "Hoffman"
+      ]
+    },
+    {
+      "answer": "Jodie Foster",
+      "tokens": [
+        "Jodie",
+        "Foster"
+      ]
+    },
+    {
+      "answer": "Johnny Depp",
+      "tokens": [
+        "Johnny",
+        "Depp"
+      ]
+    },
+    {
+      "answer": "Julia Roberts",
+      "tokens": [
+        "Julia",
+        "Roberts"
+      ]
+    },
+    {
+      "answer": "Nicole Kidman",
+      "tokens": [
+        "Nicole",
+        "Kidman"
+      ]
+    },
+    {
+      "answer": "Kate Winslet",
+      "tokens": [
+        "Kate",
+        "Winslet"
+      ]
+    },
+    {
+      "answer": "Matt Damon",
+      "tokens": [
+        "Matt",
+        "Damon"
+      ]
+    },
+    {
+      "answer": "George Clooney",
+      "tokens": [
+        "George",
+        "Clooney"
+      ]
+    },
+    {
+      "answer": "Will Smith",
+      "tokens": [
+        "Will",
+        "Smith"
+      ]
+    },
+    {
+      "answer": "Sandra Bullock",
+      "tokens": [
+        "Sandra",
+        "Bullock"
+      ]
+    },
+    {
+      "answer": "Halle Berry",
+      "tokens": [
+        "Halle",
+        "Berry"
+      ]
+    },
+    {
+      "answer": "Angelina Jolie",
+      "tokens": [
+        "Angelina",
+        "Jolie"
+      ]
+    },
+    {
+      "answer": "Ryan Gosling",
+      "tokens": [
+        "Ryan",
+        "Gosling"
+      ]
+    },
+    {
+      "answer": "Anne Hathaway",
+      "tokens": [
+        "Anne",
+        "Hathaway"
+      ]
+    },
+    {
+      "answer": "Tom Cruise",
+      "tokens": [
+        "Tom",
+        "Cruise"
+      ]
+    },
+    {
+      "answer": "Harrison Ford",
+      "tokens": [
+        "Harrison",
+        "Ford"
+      ]
+    },
+    {
+      "answer": "Liam Neeson",
+      "tokens": [
+        "Liam",
+        "Neeson"
+      ]
+    },
+    {
+      "answer": "Michael Caine",
+      "tokens": [
+        "Michael",
+        "Caine"
+      ]
+    },
+    {
+      "answer": "Maggie Smith",
+      "tokens": [
+        "Maggie",
+        "Smith"
+      ]
+    },
+    {
+      "answer": "Judi Dench",
+      "tokens": [
+        "Judi",
+        "Dench"
+      ]
+    },
+    {
+      "answer": "Ian McKellen",
+      "tokens": [
+        "Ian",
+        "McKellen"
+      ]
+    },
+    {
+      "answer": "Patrick Stewart",
+      "tokens": [
+        "Patrick",
+        "Stewart"
+      ]
+    },
+    {
+      "answer": "Ralph Fiennes",
+      "tokens": [
+        "Ralph",
+        "Fiennes"
+      ]
+    },
+    {
+      "answer": "Edward Norton",
+      "tokens": [
+        "Edward",
+        "Norton"
+      ]
+    },
+    {
+      "answer": "Benicio Del Toro",
+      "tokens": [
+        "Benicio",
+        "Del",
+        "Toro"
+      ]
+    },
+    {
+      "answer": "Javier Bardem",
+      "tokens": [
+        "Javier",
+        "Bardem"
+      ]
+    },
+    {
+      "answer": "Penelope Cruz",
+      "tokens": [
+        "Penelope",
+        "Cruz"
+      ]
+    },
+    {
+      "answer": "Marion Cotillard",
+      "tokens": [
+        "Marion",
+        "Cotillard"
+      ]
+    },
+    {
+      "answer": "Christoph Waltz",
+      "tokens": [
+        "Christoph",
+        "Waltz"
+      ]
+    },
+    {
+      "answer": "Colin Firth",
+      "tokens": [
+        "Colin",
+        "Firth"
+      ]
+    },
+    {
+      "answer": "Hugh Jackman",
+      "tokens": [
+        "Hugh",
+        "Jackman"
+      ]
+    },
+    {
+      "answer": "Russell Crowe",
+      "tokens": [
+        "Russell",
+        "Crowe"
+      ]
+    },
+    {
+      "answer": "Mads Mikkelsen",
+      "tokens": [
+        "Mads",
+        "Mikkelsen"
+      ]
+    },
+    {
+      "answer": "Antonio Banderas",
+      "tokens": [
+        "Antonio",
+        "Banderas"
+      ]
+    },
+    {
+      "answer": "Gael Garcia Bernal",
+      "tokens": [
+        "Gael",
+        "Garcia",
+        "Bernal"
+      ]
+    },
+    {
+      "answer": "Jessica Chastain",
+      "tokens": [
+        "Jessica",
+        "Chastain"
+      ]
+    },
+    {
+      "answer": "Jake Gyllenhaal",
+      "tokens": [
+        "Jake",
+        "Gyllenhaal"
+      ]
+    },
+    {
+      "answer": "Cillian Murphy",
+      "tokens": [
+        "Cillian",
+        "Murphy"
+      ]
+    },
+    {
+      "answer": "Song Kang Ho",
+      "tokens": [
+        "Song",
+        "Kang",
+        "Ho"
+      ]
+    },
+    {
+      "answer": "Donatas Banionis",
+      "tokens": [
+        "Donatas",
+        "Banionis"
+      ]
+    },
+    {
+      "answer": "Regimantas Adomaitis",
+      "tokens": [
+        "Regimantas",
+        "Adomaitis"
+      ]
+    },
+    {
+      "answer": "Ingeborga Dapkūnaitė",
+      "tokens": [
+        "Ingeborga",
+        "Dapkūnaitė"
+      ]
+    },
+    {
+      "answer": "Arūnas Sakalauskas",
+      "tokens": [
+        "Arūnas",
+        "Sakalauskas"
+      ]
+    }
+  ],
+  "famous_people": [
+    {
+      "answer": "Albert Einstein",
+      "tokens": [
+        "Albert",
+        "Einstein"
+      ]
+    },
+    {
+      "answer": "Marie Curie",
+      "tokens": [
+        "Marie",
+        "Curie"
+      ]
+    },
+    {
+      "answer": "Nelson Mandela",
+      "tokens": [
+        "Nelson",
+        "Mandela"
+      ]
+    },
+    {
+      "answer": "Isaac Newton",
+      "tokens": [
+        "Isaac",
+        "Newton"
+      ]
+    },
+    {
+      "answer": "Frida Kahlo",
+      "tokens": [
+        "Frida",
+        "Kahlo"
+      ]
+    },
+    {
+      "answer": "Martin Luther King",
+      "tokens": [
+        "Martin",
+        "Luther",
+        "King"
+      ]
+    },
+    {
+      "answer": "Leonardo da Vinci",
+      "tokens": [
+        "Leonardo",
+        "da",
+        "Vinci"
+      ]
+    },
+    {
+      "answer": "William Shakespeare",
+      "tokens": [
+        "William",
+        "Shakespeare"
+      ]
+    },
+    {
+      "answer": "Cleopatra",
+      "tokens": [
+        "Cleopatra"
+      ]
+    },
+    {
+      "answer": "Mahatma Gandhi",
+      "tokens": [
+        "Mahatma",
+        "Gandhi"
+      ]
+    },
+    {
+      "answer": "Stephen Hawking",
+      "tokens": [
+        "Stephen",
+        "Hawking"
+      ]
+    },
+    {
+      "answer": "Jane Austen",
+      "tokens": [
+        "Jane",
+        "Austen"
+      ]
+    },
+    {
+      "answer": "Elon Musk",
+      "tokens": [
+        "Elon",
+        "Musk"
+      ]
+    },
+    {
+      "answer": "Ada Lovelace",
+      "tokens": [
+        "Ada",
+        "Lovelace"
+      ]
+    },
+    {
+      "answer": "Winston Churchill",
+      "tokens": [
+        "Winston",
+        "Churchill"
+      ]
+    },
+    {
+      "answer": "Amelia Earhart",
+      "tokens": [
+        "Amelia",
+        "Earhart"
+      ]
+    },
+    {
+      "answer": "Vincent van Gogh",
+      "tokens": [
+        "Vincent",
+        "van",
+        "Gogh"
+      ]
+    },
+    {
+      "answer": "Mozart",
+      "tokens": [
+        "Mozart"
+      ]
+    },
+    {
+      "answer": "Beyonce",
+      "tokens": [
+        "Beyonce"
+      ]
+    },
+    {
+      "answer": "David Bowie",
+      "tokens": [
+        "David",
+        "Bowie"
+      ]
+    },
+    {
+      "answer": "Freddie Mercury",
+      "tokens": [
+        "Freddie",
+        "Mercury"
+      ]
+    },
+    {
+      "answer": "Oprah Winfrey",
+      "tokens": [
+        "Oprah",
+        "Winfrey"
+      ]
+    },
+    {
+      "answer": "Pablo Picasso",
+      "tokens": [
+        "Pablo",
+        "Picasso"
+      ]
+    },
+    {
+      "answer": "Nikola Tesla",
+      "tokens": [
+        "Nikola",
+        "Tesla"
+      ]
+    },
+    {
+      "answer": "Rosa Parks",
+      "tokens": [
+        "Rosa",
+        "Parks"
+      ]
+    },
+    {
+      "answer": "Charles Darwin",
+      "tokens": [
+        "Charles",
+        "Darwin"
+      ]
+    },
+    {
+      "answer": "Florence Nightingale",
+      "tokens": [
+        "Florence",
+        "Nightingale"
+      ]
+    },
+    {
+      "answer": "Abraham Lincoln",
+      "tokens": [
+        "Abraham",
+        "Lincoln"
+      ]
+    },
+    {
+      "answer": "Serena Williams",
+      "tokens": [
+        "Serena",
+        "Williams"
+      ]
+    },
+    {
+      "answer": "Confucius",
+      "tokens": [
+        "Confucius"
+      ]
+    },
+    {
+      "answer": "Galileo Galilei",
+      "tokens": [
+        "Galileo",
+        "Galilei"
+      ]
+    },
+    {
+      "answer": "Alexander Fleming",
+      "tokens": [
+        "Alexander",
+        "Fleming"
+      ]
+    },
+    {
+      "answer": "Louis Pasteur",
+      "tokens": [
+        "Louis",
+        "Pasteur"
+      ]
+    },
+    {
+      "answer": "Alan Turing",
+      "tokens": [
+        "Alan",
+        "Turing"
+      ]
+    },
+    {
+      "answer": "Thomas Edison",
+      "tokens": [
+        "Thomas",
+        "Edison"
+      ]
+    },
+    {
+      "answer": "Alexander Graham Bell",
+      "tokens": [
+        "Alexander",
+        "Graham",
+        "Bell"
+      ]
+    },
+    {
+      "answer": "Johannes Gutenberg",
+      "tokens": [
+        "Johannes",
+        "Gutenberg"
+      ]
+    },
+    {
+      "answer": "Nicolaus Copernicus",
+      "tokens": [
+        "Nicolaus",
+        "Copernicus"
+      ]
+    },
+    {
+      "answer": "Michael Faraday",
+      "tokens": [
+        "Michael",
+        "Faraday"
+      ]
+    },
+    {
+      "answer": "Dmitri Mendeleev",
+      "tokens": [
+        "Dmitri",
+        "Mendeleev"
+      ]
+    },
+    {
+      "answer": "Sigmund Freud",
+      "tokens": [
+        "Sigmund",
+        "Freud"
+      ]
+    },
+    {
+      "answer": "Neil Armstrong",
+      "tokens": [
+        "Neil",
+        "Armstrong"
+      ]
+    },
+    {
+      "answer": "Yuri Gagarin",
+      "tokens": [
+        "Yuri",
+        "Gagarin"
+      ]
+    },
+    {
+      "answer": "Julius Caesar",
+      "tokens": [
+        "Julius",
+        "Caesar"
+      ]
+    },
+    {
+      "answer": "Alexander the Great",
+      "tokens": [
+        "Alexander",
+        "the",
+        "Great"
+      ]
+    },
+    {
+      "answer": "Napoleon Bonaparte",
+      "tokens": [
+        "Napoleon",
+        "Bonaparte"
+      ]
+    },
+    {
+      "answer": "George Washington",
+      "tokens": [
+        "George",
+        "Washington"
+      ]
+    },
+    {
+      "answer": "John F Kennedy",
+      "tokens": [
+        "John",
+        "F",
+        "Kennedy"
+      ]
+    },
+    {
+      "answer": "Franklin D Roosevelt",
+      "tokens": [
+        "Franklin",
+        "D",
+        "Roosevelt"
+      ]
+    },
+    {
+      "answer": "Queen Elizabeth I",
+      "tokens": [
+        "Queen",
+        "Elizabeth",
+        "I"
+      ]
+    },
+    {
+      "answer": "Catherine the Great",
+      "tokens": [
+        "Catherine",
+        "the",
+        "Great"
+      ]
+    },
+    {
+      "answer": "Joan of Arc",
+      "tokens": [
+        "Joan",
+        "of",
+        "Arc"
+      ]
+    },
+    {
+      "answer": "Plato",
+      "tokens": [
+        "Plato"
+      ]
+    },
+    {
+      "answer": "Aristotle",
+      "tokens": [
+        "Aristotle"
+      ]
+    },
+    {
+      "answer": "Socrates",
+      "tokens": [
+        "Socrates"
+      ]
+    },
+    {
+      "answer": "Friedrich Nietzsche",
+      "tokens": [
+        "Friedrich",
+        "Nietzsche"
+      ]
+    },
+    {
+      "answer": "Karl Marx",
+      "tokens": [
+        "Karl",
+        "Marx"
+      ]
+    },
+    {
+      "answer": "Mark Twain",
+      "tokens": [
+        "Mark",
+        "Twain"
+      ]
+    },
+    {
+      "answer": "Ernest Hemingway",
+      "tokens": [
+        "Ernest",
+        "Hemingway"
+      ]
+    },
+    {
+      "answer": "George Orwell",
+      "tokens": [
+        "George",
+        "Orwell"
+      ]
+    },
+    {
+      "answer": "Leo Tolstoy",
+      "tokens": [
+        "Leo",
+        "Tolstoy"
+      ]
+    },
+    {
+      "answer": "Michelangelo",
+      "tokens": [
+        "Michelangelo"
+      ]
+    },
+    {
+      "answer": "Rembrandt",
+      "tokens": [
+        "Rembrandt"
+      ]
+    },
+    {
+      "answer": "Salvador Dalí",
+      "tokens": [
+        "Salvador",
+        "Dalí"
+      ]
+    },
+    {
+      "answer": "Claude Monet",
+      "tokens": [
+        "Claude",
+        "Monet"
+      ]
+    },
+    {
+      "answer": "Ludwig van Beethoven",
+      "tokens": [
+        "Ludwig",
+        "van",
+        "Beethoven"
+      ]
+    },
+    {
+      "answer": "Johann Sebastian Bach",
+      "tokens": [
+        "Johann",
+        "Sebastian",
+        "Bach"
+      ]
+    },
+    {
+      "answer": "Elvis Presley",
+      "tokens": [
+        "Elvis",
+        "Presley"
+      ]
+    },
+    {
+      "answer": "Michael Jackson",
+      "tokens": [
+        "Michael",
+        "Jackson"
+      ]
+    },
+    {
+      "answer": "Kurt Cobain",
+      "tokens": [
+        "Kurt",
+        "Cobain"
+      ]
+    },
+    {
+      "answer": "Pyotr Tchaikovsky",
+      "tokens": [
+        "Pyotr",
+        "Tchaikovsky"
+      ]
+    },
+    {
+      "answer": "Marco Polo",
+      "tokens": [
+        "Marco",
+        "Polo"
+      ]
+    },
+    {
+      "answer": "Christopher Columbus",
+      "tokens": [
+        "Christopher",
+        "Columbus"
+      ]
+    },
+    {
+      "answer": "Ferdinand Magellan",
+      "tokens": [
+        "Ferdinand",
+        "Magellan"
+      ]
+    },
+    {
+      "answer": "Anne Frank",
+      "tokens": [
+        "Anne",
+        "Frank"
+      ]
+    },
+    {
+      "answer": "Muhammad Ali",
+      "tokens": [
+        "Muhammad",
+        "Ali"
+      ]
+    },
+    {
+      "answer": "Charlie Chaplin",
+      "tokens": [
+        "Charlie",
+        "Chaplin"
+      ]
+    },
+    {
+      "answer": "Walt Disney",
+      "tokens": [
+        "Walt",
+        "Disney"
+      ]
+    },
+    {
+      "answer": "Bruce Lee",
+      "tokens": [
+        "Bruce",
+        "Lee"
+      ]
+    },
+    {
+      "answer": "Mikalojus Konstantinas Čiurlionis",
+      "tokens": [
+        "Mikalojus",
+        "Konstantinas",
+        "Čiurlionis"
+      ]
+    },
+    {
+      "answer": "Maironis",
+      "tokens": [
+        "Maironis"
+      ]
+    },
+    {
+      "answer": "Vydūnas",
+      "tokens": [
+        "Vydūnas"
+      ]
+    },
+    {
+      "answer": "Jonas Basanavičius",
+      "tokens": [
+        "Jonas",
+        "Basanavičius"
+      ]
+    }
+  ],
+  "books": [
+    {
+      "answer": "Nužudyti strazdą",
+      "tokens": [
+        "Nužudyti",
+        "strazdą"
+      ]
+    },
+    {
+      "answer": "1984-ieji",
+      "tokens": [
+        "1984-ieji"
+      ]
+    },
+    {
+      "answer": "Puikybė ir prietarai",
+      "tokens": [
+        "Puikybė",
+        "ir",
+        "prietarai"
+      ]
+    },
+    {
+      "answer": "Didysis Getsbis",
+      "tokens": [
+        "Didysis",
+        "Getsbis"
+      ]
+    },
+    {
+      "answer": "Mobis Dikas",
+      "tokens": [
+        "Mobis",
+        "Dikas"
+      ]
+    },
+    {
+      "answer": "Karas ir taika",
+      "tokens": [
+        "Karas",
+        "ir",
+        "taika"
+      ]
+    },
+    {
+      "answer": "Rugiuose prie bedugnės",
+      "tokens": [
+        "Rugiuose",
+        "prie",
+        "bedugnės"
+      ]
+    },
+    {
+      "answer": "Hobitas",
+      "tokens": [
+        "Hobitas"
+      ]
+    },
+    {
+      "answer": "Drąsus naujas pasaulis",
+      "tokens": [
+        "Drąsus",
+        "naujas",
+        "pasaulis"
+      ]
+    },
+    {
+      "answer": "Farenheitas 451",
+      "tokens": [
+        "Farenheitas",
+        "451"
+      ]
+    },
+    {
+      "answer": "Džeinė Eir",
+      "tokens": [
+        "Džeinė",
+        "Eir"
+      ]
+    },
+    {
+      "answer": "Vėtrų aukštumos",
+      "tokens": [
+        "Vėtrų",
+        "aukštumos"
+      ]
+    },
+    {
+      "answer": "Žiedų valdovas",
+      "tokens": [
+        "Žiedų",
+        "valdovas"
+      ]
+    },
+    {
+      "answer": "Haris Poteris",
+      "tokens": [
+        "Haris",
+        "Poteris"
+      ]
+    },
+    {
+      "answer": "Alchemikas",
+      "tokens": [
+        "Alchemikas"
+      ]
+    },
+    {
+      "answer": "Drakula",
+      "tokens": [
+        "Drakula"
+      ]
+    },
+    {
+      "answer": "Frankenšteinas",
+      "tokens": [
+        "Frankenšteinas"
+      ]
+    },
+    {
+      "answer": "Doriano Grėjaus portretas",
+      "tokens": [
+        "Doriano",
+        "Grėjaus",
+        "portretas"
+      ]
+    },
+    {
+      "answer": "Nusikaltimas ir bausmė",
+      "tokens": [
+        "Nusikaltimas",
+        "ir",
+        "bausmė"
+      ]
+    },
+    {
+      "answer": "Alisa stebuklų šalyje",
+      "tokens": [
+        "Alisa",
+        "stebuklų",
+        "šalyje"
+      ]
+    },
+    {
+      "answer": "Narnijos kronikos",
+      "tokens": [
+        "Narnijos",
+        "kronikos"
+      ]
+    },
+    {
+      "answer": "Vėjo nublokšti",
+      "tokens": [
+        "Vėjo",
+        "nublokšti"
+      ]
+    },
+    {
+      "answer": "Keliautojo vadovas po galaktiką",
+      "tokens": [
+        "Keliautojo",
+        "vadovas",
+        "po",
+        "galaktiką"
+      ]
+    },
+    {
+      "answer": "Kopa",
+      "tokens": [
+        "Kopa"
+      ]
+    },
+    {
+      "answer": "Tarnaitės pasakojimas",
+      "tokens": [
+        "Tarnaitės",
+        "pasakojimas"
+      ]
+    },
+    {
+      "answer": "Magijos spalva",
+      "tokens": [
+        "Magijos",
+        "spalva"
+      ]
+    },
+    {
+      "answer": "Geri ženklai",
+      "tokens": [
+        "Geri",
+        "ženklai"
+      ]
+    },
+    {
+      "answer": "Vėjo vardas",
+      "tokens": [
+        "Vėjo",
+        "vardas"
+      ]
+    },
+    {
+      "answer": "Odisėja",
+      "tokens": [
+        "Odisėja"
+      ]
+    },
+    {
+      "answer": "Nusišalę",
+      "tokens": [
+        "Nusišalę"
+      ]
+    },
+    {
+      "answer": "Don Kichotas",
+      "tokens": [
+        "Don",
+        "Kichotas"
+      ]
+    },
+    {
+      "answer": "Šimtas metų vienatvės",
+      "tokens": [
+        "Šimtas",
+        "metų",
+        "vienatvės"
+      ]
+    },
+    {
+      "answer": "Broliai Karamazovai",
+      "tokens": [
+        "Broliai",
+        "Karamazovai"
+      ]
+    },
+    {
+      "answer": "Ana Karenina",
+      "tokens": [
+        "Ana",
+        "Karenina"
+      ]
+    },
+    {
+      "answer": "Didieji lūkesčiai",
+      "tokens": [
+        "Didieji",
+        "lūkesčiai"
+      ]
+    },
+    {
+      "answer": "Pasaka apie du miestus",
+      "tokens": [
+        "Pasaka",
+        "apie",
+        "du",
+        "miestus"
+      ]
+    },
+    {
+      "answer": "Raudonoji raidė",
+      "tokens": [
+        "Raudonoji",
+        "raidė"
+      ]
+    },
+    {
+      "answer": "Rūstybės kekės",
+      "tokens": [
+        "Rūstybės",
+        "kekės"
+      ]
+    },
+    {
+      "answer": "Apie peles ir žmones",
+      "tokens": [
+        "Apie",
+        "peles",
+        "ir",
+        "žmones"
+      ]
+    },
+    {
+      "answer": "Penktos klasės skerdykla",
+      "tokens": [
+        "Penktos",
+        "klasės",
+        "skerdykla"
+      ]
+    },
+    {
+      "answer": "Gaudynės dvidešimt du",
+      "tokens": [
+        "Gaudynės",
+        "dvidešimt",
+        "du"
+      ]
+    },
+    {
+      "answer": "Lolita",
+      "tokens": [
+        "Lolita"
+      ]
+    },
+    {
+      "answer": "Ulisas",
+      "tokens": [
+        "Ulisas"
+      ]
+    },
+    {
+      "answer": "Brangioji",
+      "tokens": [
+        "Brangioji"
+      ]
+    },
+    {
+      "answer": "Violetinė spalva",
+      "tokens": [
+        "Violetinė",
+        "spalva"
+      ]
+    },
+    {
+      "answer": "Kelias",
+      "tokens": [
+        "Kelias"
+      ]
+    },
+    {
+      "answer": "Svetimšalis",
+      "tokens": [
+        "Svetimšalis"
+      ]
+    },
+    {
+      "answer": "Metamorfozė",
+      "tokens": [
+        "Metamorfozė"
+      ]
+    },
+    {
+      "answer": "Process",
+      "tokens": [
+        "Process"
+      ]
+    },
+    {
+      "answer": "Dvidešimt tūkstančių mylių po vandeniu",
+      "tokens": [
+        "Dvidešimt",
+        "tūkstančių",
+        "mylių",
+        "po",
+        "vandeniu"
+      ]
+    },
+    {
+      "answer": "Aplink pasaulį per aštuoniasdešimt dienų",
+      "tokens": [
+        "Aplink",
+        "pasaulį",
+        "per",
+        "aštuoniasdešimt",
+        "dienų"
+      ]
+    },
+    {
+      "answer": "Pasaulių karas",
+      "tokens": [
+        "Pasaulių",
+        "karas"
+      ]
+    },
+    {
+      "answer": "Gyvulių ūkis",
+      "tokens": [
+        "Gyvulių",
+        "ūkis"
+      ]
+    },
+    {
+      "answer": "Monte Kristo grafas",
+      "tokens": [
+        "Monte",
+        "Kristo",
+        "grafas"
+      ]
+    },
+    {
+      "answer": "Trys muškietininkai",
+      "tokens": [
+        "Trys",
+        "muškietininkai"
+      ]
+    },
+    {
+      "answer": "Lobio sala",
+      "tokens": [
+        "Lobio",
+        "sala"
+      ]
+    },
+    {
+      "answer": "Mažosios moterys",
+      "tokens": [
+        "Mažosios",
+        "moterys"
+      ]
+    },
+    {
+      "answer": "Tomo Sojerio nuotykiai",
+      "tokens": [
+        "Tomo",
+        "Sojerio",
+        "nuotykiai"
+      ]
+    },
+    {
+      "answer": "Kalėdų giesmė",
+      "tokens": [
+        "Kalėdų",
+        "giesmė"
+      ]
+    },
+    {
+      "answer": "Oliveris Tvistas",
+      "tokens": [
+        "Oliveris",
+        "Tvistas"
+      ]
+    },
+    {
+      "answer": "Bado žaidynės",
+      "tokens": [
+        "Bado",
+        "žaidynės"
+      ]
+    },
+    {
+      "answer": "Da Vinčio kodas",
+      "tokens": [
+        "Da",
+        "Vinčio",
+        "kodas"
+      ]
+    },
+    {
+      "answer": "Mūsų žvaigždžių kaltė",
+      "tokens": [
+        "Mūsų",
+        "žvaigždžių",
+        "kaltė"
+      ]
+    },
+    {
+      "answer": "Pyroginoja gyvenimas",
+      "tokens": [
+        "Pyroginoja",
+        "gyvenimas"
+      ]
+    },
+    {
+      "answer": "Knygų vagilė",
+      "tokens": [
+        "Knygų",
+        "vagilė"
+      ]
+    },
+    {
+      "answer": "Aitvaro bėgikas",
+      "tokens": [
+        "Aitvaro",
+        "bėgikas"
+      ]
+    },
+    {
+      "answer": "Dingusi mergina",
+      "tokens": [
+        "Dingusi",
+        "mergina"
+      ]
+    },
+    {
+      "answer": "Mergina su drakono tatuiruote",
+      "tokens": [
+        "Mergina",
+        "su",
+        "drakono",
+        "tatuiruote"
+      ]
+    },
+    {
+      "answer": "Švytėjimas",
+      "tokens": [
+        "Švytėjimas"
+      ]
+    },
+    {
+      "answer": "Tas",
+      "tokens": [
+        "Tas"
+      ]
+    },
+    {
+      "answer": "Marsietis",
+      "tokens": [
+        "Marsietis"
+      ]
+    },
+    {
+      "answer": "Enderio žaidimas",
+      "tokens": [
+        "Enderio",
+        "žaidimas"
+      ]
+    },
+    {
+      "answer": "Fondas",
+      "tokens": [
+        "Fondas"
+      ]
+    },
+    {
+      "answer": "Aš robotas",
+      "tokens": [
+        "Aš",
+        "robotas"
+      ]
+    },
+    {
+      "answer": "Sostų žaidimas",
+      "tokens": [
+        "Sostų",
+        "žaidimas"
+      ]
+    },
+    {
+      "answer": "Metai",
+      "tokens": [
+        "Metai"
+      ]
+    },
+    {
+      "answer": "Anykščių šilelis",
+      "tokens": [
+        "Anykščių",
+        "šilelis"
+      ]
+    },
+    {
+      "answer": "Dievų miškas",
+      "tokens": [
+        "Dievų",
+        "miškas"
+      ]
+    },
+    {
+      "answer": "Altorių šešėly",
+      "tokens": [
+        "Altorių",
+        "šešėly"
+      ]
+    },
+    {
+      "answer": "Balta drobulė",
+      "tokens": [
+        "Balta",
+        "drobulė"
+      ]
+    }
+  ],
+  "fictional_characters": [
+    {
+      "answer": "Šerlokas Holmsas",
+      "tokens": [
+        "Šerlokas",
+        "Holmsas"
+      ]
+    },
+    {
+      "answer": "Haris Poteris",
+      "tokens": [
+        "Haris",
+        "Poteris"
+      ]
+    },
+    {
+      "answer": "Frodas Beginsas",
+      "tokens": [
+        "Frodas",
+        "Beginsas"
+      ]
+    },
+    {
+      "answer": "Dartas Veideris",
+      "tokens": [
+        "Dartas",
+        "Veideris"
+      ]
+    },
+    {
+      "answer": "Džeimsas Bondas",
+      "tokens": [
+        "Džeimsas",
+        "Bondas"
+      ]
+    },
+    {
+      "answer": "Katnis Everdin",
+      "tokens": [
+        "Katnis",
+        "Everdin"
+      ]
+    },
+    {
+      "answer": "Taileris Durdenas",
+      "tokens": [
+        "Taileris",
+        "Durdenas"
+      ]
+    },
+    {
+      "answer": "Hanibalas Lekteris",
+      "tokens": [
+        "Hanibalas",
+        "Lekteris"
+      ]
+    },
+    {
+      "answer": "Don Kichotas",
+      "tokens": [
+        "Don",
+        "Kichotas"
+      ]
+    },
+    {
+      "answer": "Lokis",
+      "tokens": [
+        "Lokis"
+      ]
+    },
+    {
+      "answer": "Nuostabi moteris",
+      "tokens": [
+        "Nuostabi",
+        "moteris"
+      ]
+    },
+    {
+      "answer": "Tonis Starkas",
+      "tokens": [
+        "Tonis",
+        "Starkas"
+      ]
+    },
+    {
+      "answer": "Džonas Sniegas",
+      "tokens": [
+        "Džonas",
+        "Sniegas"
+      ]
+    },
+    {
+      "answer": "Valteris Vaitas",
+      "tokens": [
+        "Valteris",
+        "Vaitas"
+      ]
+    },
+    {
+      "answer": "Indiana Džounsas",
+      "tokens": [
+        "Indiana",
+        "Džounsas"
+      ]
+    },
+    {
+      "answer": "Žmogus voras",
+      "tokens": [
+        "Žmogus",
+        "voras"
+      ]
+    },
+    {
+      "answer": "Golumas",
+      "tokens": [
+        "Golumas"
+      ]
+    },
+    {
+      "answer": "Piteris Penas",
+      "tokens": [
+        "Piteris",
+        "Penas"
+      ]
+    },
+    {
+      "answer": "Miklusis Pūkuotukas",
+      "tokens": [
+        "Miklusis",
+        "Pūkuotukas"
+      ]
+    },
+    {
+      "answer": "Gandalfas",
+      "tokens": [
+        "Gandalfas"
+      ]
+    },
+    {
+      "answer": "Herkulis",
+      "tokens": [
+        "Herkulis"
+      ]
+    },
+    {
+      "answer": "Atikusas Finčas",
+      "tokens": [
+        "Atikusas",
+        "Finčas"
+      ]
+    },
+    {
+      "answer": "Elzbieta Benet",
+      "tokens": [
+        "Elzbieta",
+        "Benet"
+      ]
+    },
+    {
+      "answer": "Huklberis Finas",
+      "tokens": [
+        "Huklberis",
+        "Finas"
+      ]
+    },
+    {
+      "answer": "Daktaras Kas",
+      "tokens": [
+        "Daktaras",
+        "Kas"
+      ]
+    },
+    {
+      "answer": "Ythenas Hantas",
+      "tokens": [
+        "Ythenas",
+        "Hantas"
+      ]
+    },
+    {
+      "answer": "Deneris Targarien",
+      "tokens": [
+        "Deneris",
+        "Targarien"
+      ]
+    },
+    {
+      "answer": "Rikas Sančezas",
+      "tokens": [
+        "Rikas",
+        "Sančezas"
+      ]
+    },
+    {
+      "answer": "Mario",
+      "tokens": [
+        "Mario"
+      ]
+    },
+    {
+      "answer": "Hermiona Granger",
+      "tokens": [
+        "Hermiona",
+        "Granger"
+      ]
+    },
+    {
+      "answer": "Betmenas",
+      "tokens": [
+        "Betmenas"
+      ]
+    },
+    {
+      "answer": "Supermenas",
+      "tokens": [
+        "Supermenas"
+      ]
+    },
+    {
+      "answer": "Lukas Skaivokeris",
+      "tokens": [
+        "Lukas",
+        "Skaivokeris"
+      ]
+    },
+    {
+      "answer": "Džekas Sperou",
+      "tokens": [
+        "Džekas",
+        "Sperou"
+      ]
+    },
+    {
+      "answer": "Džokeris",
+      "tokens": [
+        "Džokeris"
+      ]
+    },
+    {
+      "answer": "Drakula",
+      "tokens": [
+        "Drakula"
+      ]
+    },
+    {
+      "answer": "King Kongas",
+      "tokens": [
+        "King",
+        "Kongas"
+      ]
+    },
+    {
+      "answer": "Godzila",
+      "tokens": [
+        "Godzila"
+      ]
+    },
+    {
+      "answer": "Rokis Balboa",
+      "tokens": [
+        "Rokis",
+        "Balboa"
+      ]
+    },
+    {
+      "answer": "Joda",
+      "tokens": [
+        "Joda"
+      ]
+    },
+    {
+      "answer": "Dobia",
+      "tokens": [
+        "Dobia"
+      ]
+    },
+    {
+      "answer": "Legolasas",
+      "tokens": [
+        "Legolasas"
+      ]
+    },
+    {
+      "answer": "Aragornas",
+      "tokens": [
+        "Aragornas"
+      ]
+    },
+    {
+      "answer": "Bilbas Beginsas",
+      "tokens": [
+        "Bilbas",
+        "Beginsas"
+      ]
+    },
+    {
+      "answer": "Severas Sneipas",
+      "tokens": [
+        "Severas",
+        "Sneipas"
+      ]
+    },
+    {
+      "answer": "Albas Dumbldoras",
+      "tokens": [
+        "Albas",
+        "Dumbldoras"
+      ]
+    },
+    {
+      "answer": "Ronis Vizlis",
+      "tokens": [
+        "Ronis",
+        "Vizlis"
+      ]
+    },
+    {
+      "answer": "Dartas Maulas",
+      "tokens": [
+        "Dartas",
+        "Maulas"
+      ]
+    },
+    {
+      "answer": "Lara Kroft",
+      "tokens": [
+        "Lara",
+        "Kroft"
+      ]
+    },
+    {
+      "answer": "Neitanas Dreikas",
+      "tokens": [
+        "Neitanas",
+        "Dreikas"
+      ]
+    },
+    {
+      "answer": "Sonikas",
+      "tokens": [
+        "Sonikas"
+      ]
+    },
+    {
+      "answer": "Linkas",
+      "tokens": [
+        "Linkas"
+      ]
+    },
+    {
+      "answer": "Pikachu",
+      "tokens": [
+        "Pikachu"
+      ]
+    },
+    {
+      "answer": "Naruto",
+      "tokens": [
+        "Naruto"
+      ]
+    },
+    {
+      "answer": "Gokas",
+      "tokens": [
+        "Gokas"
+      ]
+    },
+    {
+      "answer": "Seilor Mun",
+      "tokens": [
+        "Seilor",
+        "Mun"
+      ]
+    },
+    {
+      "answer": "Lufis",
+      "tokens": [
+        "Lufis"
+      ]
+    },
+    {
+      "answer": "Kraudas Straifas",
+      "tokens": [
+        "Kraudas",
+        "Straifas"
+      ]
+    },
+    {
+      "answer": "Sefirotas",
+      "tokens": [
+        "Sefirotas"
+      ]
+    },
+    {
+      "answer": "Solidas Sneikas",
+      "tokens": [
+        "Solidas",
+        "Sneikas"
+      ]
+    },
+    {
+      "answer": "Master Čifas",
+      "tokens": [
+        "Master",
+        "Čifas"
+      ]
+    },
+    {
+      "answer": "Geraltas iš Rivijos",
+      "tokens": [
+        "Geraltas",
+        "iš",
+        "Rivijos"
+      ]
+    },
+    {
+      "answer": "Džoelas",
+      "tokens": [
+        "Džoelas"
+      ]
+    },
+    {
+      "answer": "Elė",
+      "tokens": [
+        "Elė"
+      ]
+    },
+    {
+      "answer": "Kempiniukas Plačkelnis",
+      "tokens": [
+        "Kempiniukas",
+        "Plačkelnis"
+      ]
+    },
+    {
+      "answer": "Skūbis-Du",
+      "tokens": [
+        "Skūbis-Du"
+      ]
+    },
+    {
+      "answer": "Šrekas",
+      "tokens": [
+        "Šrekas"
+      ]
+    },
+    {
+      "answer": "Bazas Šviesmetis",
+      "tokens": [
+        "Bazas",
+        "Šviesmetis"
+      ]
+    },
+    {
+      "answer": "Vudis",
+      "tokens": [
+        "Vudis"
+      ]
+    },
+    {
+      "answer": "Elza",
+      "tokens": [
+        "Elza"
+      ]
+    },
+    {
+      "answer": "Ana",
+      "tokens": [
+        "Ana"
+      ]
+    },
+    {
+      "answer": "Simba",
+      "tokens": [
+        "Simba"
+      ]
+    },
+    {
+      "answer": "Mufasa",
+      "tokens": [
+        "Mufasa"
+      ]
+    },
+    {
+      "answer": "Skaras",
+      "tokens": [
+        "Skaras"
+      ]
+    },
+    {
+      "answer": "Tarzanas",
+      "tokens": [
+        "Tarzanas"
+      ]
+    },
+    {
+      "answer": "Mauglis",
+      "tokens": [
+        "Mauglis"
+      ]
+    },
+    {
+      "answer": "Balu",
+      "tokens": [
+        "Balu"
+      ]
+    },
+    {
+      "answer": "Po",
+      "tokens": [
+        "Po"
+      ]
+    },
+    {
+      "answer": "Neo",
+      "tokens": [
+        "Neo"
+      ]
+    },
+    {
+      "answer": "Trinitė",
+      "tokens": [
+        "Trinitė"
+      ]
+    },
+    {
+      "answer": "Morfėjus",
+      "tokens": [
+        "Morfėjus"
+      ]
+    },
+    {
+      "answer": "Elen Ripli",
+      "tokens": [
+        "Elen",
+        "Ripli"
+      ]
+    },
+    {
+      "answer": "Frankenšteinas",
+      "tokens": [
+        "Frankenšteinas"
+      ]
+    }
+  ],
+  "video_games": [
+    {
+      "answer": "The Legend of Zelda",
+      "tokens": [
+        "The",
+        "Legend",
+        "of",
+        "Zelda"
+      ]
+    },
+    {
+      "answer": "Super Mario Bros",
+      "tokens": [
+        "Super",
+        "Mario",
+        "Bros"
+      ]
+    },
+    {
+      "answer": "Red Dead Redemption",
+      "tokens": [
+        "Red",
+        "Dead",
+        "Redemption"
+      ]
+    },
+    {
+      "answer": "Minecraft",
+      "tokens": [
+        "Minecraft"
+      ]
+    },
+    {
+      "answer": "Grand Theft Auto",
+      "tokens": [
+        "Grand",
+        "Theft",
+        "Auto"
+      ]
+    },
+    {
+      "answer": "The Witcher",
+      "tokens": [
+        "The",
+        "Witcher"
+      ]
+    },
+    {
+      "answer": "Dark Souls",
+      "tokens": [
+        "Dark",
+        "Souls"
+      ]
+    },
+    {
+      "answer": "Final Fantasy",
+      "tokens": [
+        "Final",
+        "Fantasy"
+      ]
+    },
+    {
+      "answer": "Metal Gear Solid",
+      "tokens": [
+        "Metal",
+        "Gear",
+        "Solid"
+      ]
+    },
+    {
+      "answer": "Portal",
+      "tokens": [
+        "Portal"
+      ]
+    },
+    {
+      "answer": "Half Life",
+      "tokens": [
+        "Half",
+        "Life"
+      ]
+    },
+    {
+      "answer": "The Elder Scrolls",
+      "tokens": [
+        "The",
+        "Elder",
+        "Scrolls"
+      ]
+    },
+    {
+      "answer": "Mass Effect",
+      "tokens": [
+        "Mass",
+        "Effect"
+      ]
+    },
+    {
+      "answer": "God of War",
+      "tokens": [
+        "God",
+        "of",
+        "War"
+      ]
+    },
+    {
+      "answer": "BioShock",
+      "tokens": [
+        "BioShock"
+      ]
+    },
+    {
+      "answer": "The Last of Us",
+      "tokens": [
+        "The",
+        "Last",
+        "of",
+        "Us"
+      ]
+    },
+    {
+      "answer": "Street Fighter",
+      "tokens": [
+        "Street",
+        "Fighter"
+      ]
+    },
+    {
+      "answer": "Resident Evil",
+      "tokens": [
+        "Resident",
+        "Evil"
+      ]
+    },
+    {
+      "answer": "Pokemon",
+      "tokens": [
+        "Pokemon"
+      ]
+    },
+    {
+      "answer": "Assassins Creed",
+      "tokens": [
+        "Assassins",
+        "Creed"
+      ]
+    },
+    {
+      "answer": "World of Warcraft",
+      "tokens": [
+        "World",
+        "of",
+        "Warcraft"
+      ]
+    },
+    {
+      "answer": "Fallout",
+      "tokens": [
+        "Fallout"
+      ]
+    },
+    {
+      "answer": "Celeste",
+      "tokens": [
+        "Celeste"
+      ]
+    },
+    {
+      "answer": "Hollow Knight",
+      "tokens": [
+        "Hollow",
+        "Knight"
+      ]
+    },
+    {
+      "answer": "Doom",
+      "tokens": [
+        "Doom"
+      ]
+    },
+    {
+      "answer": "Undertale",
+      "tokens": [
+        "Undertale"
+      ]
+    },
+    {
+      "answer": "Persona",
+      "tokens": [
+        "Persona"
+      ]
+    },
+    {
+      "answer": "Monster Hunter",
+      "tokens": [
+        "Monster",
+        "Hunter"
+      ]
+    },
+    {
+      "answer": "Splatoon",
+      "tokens": [
+        "Splatoon"
+      ]
+    },
+    {
+      "answer": "Horizon Zero Dawn",
+      "tokens": [
+        "Horizon",
+        "Zero",
+        "Dawn"
+      ]
+    },
+    {
+      "answer": "Cyberpunk 2077",
+      "tokens": [
+        "Cyberpunk",
+        "2077"
+      ]
+    },
+    {
+      "answer": "Elden Ring",
+      "tokens": [
+        "Elden",
+        "Ring"
+      ]
+    },
+    {
+      "answer": "Baldurs Gate 3",
+      "tokens": [
+        "Baldurs",
+        "Gate",
+        "3"
+      ]
+    },
+    {
+      "answer": "Stardew Valley",
+      "tokens": [
+        "Stardew",
+        "Valley"
+      ]
+    },
+    {
+      "answer": "Among Us",
+      "tokens": [
+        "Among",
+        "Us"
+      ]
+    },
+    {
+      "answer": "Fortnite",
+      "tokens": [
+        "Fortnite"
+      ]
+    },
+    {
+      "answer": "Call of Duty",
+      "tokens": [
+        "Call",
+        "of",
+        "Duty"
+      ]
+    },
+    {
+      "answer": "Overwatch",
+      "tokens": [
+        "Overwatch"
+      ]
+    },
+    {
+      "answer": "Counter Strike",
+      "tokens": [
+        "Counter",
+        "Strike"
+      ]
+    },
+    {
+      "answer": "League of Legends",
+      "tokens": [
+        "League",
+        "of",
+        "Legends"
+      ]
+    },
+    {
+      "answer": "Halo",
+      "tokens": [
+        "Halo"
+      ]
+    },
+    {
+      "answer": "Gears of War",
+      "tokens": [
+        "Gears",
+        "of",
+        "War"
+      ]
+    },
+    {
+      "answer": "Uncharted",
+      "tokens": [
+        "Uncharted"
+      ]
+    },
+    {
+      "answer": "Batman Arkham",
+      "tokens": [
+        "Batman",
+        "Arkham"
+      ]
+    },
+    {
+      "answer": "Metroid",
+      "tokens": [
+        "Metroid"
+      ]
+    },
+    {
+      "answer": "Castlevania",
+      "tokens": [
+        "Castlevania"
+      ]
+    },
+    {
+      "answer": "Sonic the Hedgehog",
+      "tokens": [
+        "Sonic",
+        "the",
+        "Hedgehog"
+      ]
+    },
+    {
+      "answer": "Mega Man",
+      "tokens": [
+        "Mega",
+        "Man"
+      ]
+    },
+    {
+      "answer": "Pac Man",
+      "tokens": [
+        "Pac",
+        "Man"
+      ]
+    },
+    {
+      "answer": "Donkey Kong",
+      "tokens": [
+        "Donkey",
+        "Kong"
+      ]
+    },
+    {
+      "answer": "Mortal Kombat",
+      "tokens": [
+        "Mortal",
+        "Kombat"
+      ]
+    },
+    {
+      "answer": "Tekken",
+      "tokens": [
+        "Tekken"
+      ]
+    },
+    {
+      "answer": "Dragon Quest",
+      "tokens": [
+        "Dragon",
+        "Quest"
+      ]
+    },
+    {
+      "answer": "Chrono Trigger",
+      "tokens": [
+        "Chrono",
+        "Trigger"
+      ]
+    },
+    {
+      "answer": "Kingdom Hearts",
+      "tokens": [
+        "Kingdom",
+        "Hearts"
+      ]
+    },
+    {
+      "answer": "Silent Hill",
+      "tokens": [
+        "Silent",
+        "Hill"
+      ]
+    },
+    {
+      "answer": "Deus Ex",
+      "tokens": [
+        "Deus",
+        "Ex"
+      ]
+    },
+    {
+      "answer": "Far Cry",
+      "tokens": [
+        "Far",
+        "Cry"
+      ]
+    },
+    {
+      "answer": "Tomb Raider",
+      "tokens": [
+        "Tomb",
+        "Raider"
+      ]
+    },
+    {
+      "answer": "Crash Bandicoot",
+      "tokens": [
+        "Crash",
+        "Bandicoot"
+      ]
+    },
+    {
+      "answer": "Spyro the Dragon",
+      "tokens": [
+        "Spyro",
+        "the",
+        "Dragon"
+      ]
+    },
+    {
+      "answer": "Ratchet and Clank",
+      "tokens": [
+        "Ratchet",
+        "and",
+        "Clank"
+      ]
+    },
+    {
+      "answer": "Gran Turismo",
+      "tokens": [
+        "Gran",
+        "Turismo"
+      ]
+    },
+    {
+      "answer": "Forza Horizon",
+      "tokens": [
+        "Forza",
+        "Horizon"
+      ]
+    },
+    {
+      "answer": "Need for Speed",
+      "tokens": [
+        "Need",
+        "for",
+        "Speed"
+      ]
+    },
+    {
+      "answer": "Tony Hawks Pro Skater",
+      "tokens": [
+        "Tony",
+        "Hawks",
+        "Pro",
+        "Skater"
+      ]
+    },
+    {
+      "answer": "The Sims",
+      "tokens": [
+        "The",
+        "Sims"
+      ]
+    },
+    {
+      "answer": "Age of Empires",
+      "tokens": [
+        "Age",
+        "of",
+        "Empires"
+      ]
+    },
+    {
+      "answer": "StarCraft",
+      "tokens": [
+        "StarCraft"
+      ]
+    },
+    {
+      "answer": "Diablo",
+      "tokens": [
+        "Diablo"
+      ]
+    },
+    {
+      "answer": "Terraria",
+      "tokens": [
+        "Terraria"
+      ]
+    },
+    {
+      "answer": "Hades",
+      "tokens": [
+        "Hades"
+      ]
+    },
+    {
+      "answer": "Bloodborne",
+      "tokens": [
+        "Bloodborne"
+      ]
+    },
+    {
+      "answer": "Sekiro Shadows Die Twice",
+      "tokens": [
+        "Sekiro",
+        "Shadows",
+        "Die",
+        "Twice"
+      ]
+    },
+    {
+      "answer": "Ghost of Tsushima",
+      "tokens": [
+        "Ghost",
+        "of",
+        "Tsushima"
+      ]
+    },
+    {
+      "answer": "Death Stranding",
+      "tokens": [
+        "Death",
+        "Stranding"
+      ]
+    },
+    {
+      "answer": "Borderlands",
+      "tokens": [
+        "Borderlands"
+      ]
+    },
+    {
+      "answer": "Destiny",
+      "tokens": [
+        "Destiny"
+      ]
+    },
+    {
+      "answer": "Rocket League",
+      "tokens": [
+        "Rocket",
+        "League"
+      ]
+    },
+    {
+      "answer": "Civilization",
+      "tokens": [
+        "Civilization"
+      ]
+    },
+    {
+      "answer": "Disco Elysium",
+      "tokens": [
+        "Disco",
+        "Elysium"
+      ]
+    },
+    {
+      "answer": "Devil May Cry",
+      "tokens": [
+        "Devil",
+        "May",
+        "Cry"
+      ]
+    },
+    {
+      "answer": "Prince of Persia",
+      "tokens": [
+        "Prince",
+        "of",
+        "Persia"
+      ]
+    }
+  ]
+}
