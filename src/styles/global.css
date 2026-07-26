@@ -374,14 +374,15 @@ input:focus, select:focus {
 
 .letter-tile {
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
-  width: clamp(16px, min(4.5vw, 5vh), 56px);
-  height: clamp(32px, min(6vw, 6.5vh), 64px);
+  width: clamp(24px, min(8vw, 7vh), 64px);
+  height: clamp(36px, min(10vw, 9vh), 72px);
   background: var(--surface);
   border: 2px solid var(--border);
   border-radius: 6px;
-  font-size: clamp(0.7rem, min(2.5vw, 3vh), 1.8rem);
+  font-size: clamp(0.85rem, min(5vw, 4.5vh), 2.2rem);
   font-weight: 700;
   text-transform: uppercase;
   transition: all 0.3s;
@@ -400,7 +401,10 @@ input:focus, select:focus {
 
 .word-token {
   display: flex;
+  justify-content: center;
   gap: clamp(4px, 0.8vw, 10px);
+  max-width: 100%;
+  min-width: 0;
 }
 
 @keyframes reveal {
@@ -424,13 +428,13 @@ input:focus, select:focus {
 }
 
 .key {
-  width: clamp(30px, min(4vw, 4.5vh), 46px);
-  height: clamp(36px, min(5vw, 5.5vh), 54px);
+  width: clamp(32px, min(8vw, 5.5vh), 50px);
+  height: clamp(38px, min(9vw, 6.5vh), 56px);
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--surface2);
   color: var(--text);
-  font-size: clamp(0.75rem, min(2vw, 2.5vh), 1rem);
+  font-size: clamp(0.85rem, min(4.5vw, 3.5vh), 1.15rem);
   font-weight: 600;
   cursor: pointer;
   font-family: var(--font);
