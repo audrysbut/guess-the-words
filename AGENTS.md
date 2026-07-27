@@ -14,17 +14,26 @@
 - No test runner, no linter, no formatter configured
 
 ## Project structure
-- `src/App.tsx` — root component, screen routing, room management, wires hooks together
+- `src/App.tsx` — root component, screen routing, wires hooks together
 - `src/pages/` — HomeScreen, Lobby, GameScreen, SoloGame
+  - `HomeScreen.tsx` — name input, routes to `MenuScreen` or `JoinScreen` based on URL room param
+  - `MenuScreen.tsx` — create game / solo practice buttons
+  - `JoinScreen.tsx` — join game form (when `?room=` in URL)
   - `SoloGame.tsx` — solo game screen, mounts `useSoloGame`, renders `GameScreen`
-  - `Lobby.tsx` — multiplayer container, owns PeerManager + `useMultiplayerGame`, renders lobby UI or `GameScreen` internally
+  - `Lobby.tsx` — thin multiplayer consumer (51 lines), renders lobby UI or `GameScreen`
+  - `LobbyUI.tsx` — presentational lobby component (player list, invite link)
   - `GameScreen.tsx` — phase router, delegates to `PlayingScreen`, `RoundIntroScreen`, `RoundEndScreen`, `GameOverScreen`
+  - `PlayingScreen.tsx` — playing phase (keyboard, word display, timer, scoreboard)
+  - `RoundIntroScreen.tsx` — round intro (theme reveal, word preview)
+  - `RoundEndScreen.tsx` — round end (winner, answer reveal)
+  - `GameOverScreen.tsx` — game over (winner, final standings)
 - `src/components/` — Keyboard, GuessInput, WordDisplay, Timer, ThemeReveal, PlayerList, Scoreboard
 - `src/store/` — hooks and pure game logic
-  - `game-logic.ts` — pure game state transformation functions (letter guess, word guess, round transitions)
+  - `game-logic.ts` — pure game state transformation functions (letter guess, word guess, round transitions, state builders)
   - `use-language.ts` — language state with localStorage persistence
   - `use-solo-game.ts` — solo game state machine (state, handlers, round effects)
-  - `use-multiplayer-game.ts` — host/multiplayer game logic (handlers, timer, peer message routing, round effects)
+  - `use-multiplayer-game.ts` — host/multiplayer game logic (handlers, timer, peer message routing, connection lifecycle, guess routing)
+- `src/utils/share.ts` — share/copy invite link utilities
 - `src/types/game.ts` — GameState, Player, GameConfig, Theme, Language types
 - `src/types/messages.ts` — WebRTC message types
 - `src/data/words.ts` — English word bank (~180 entries) + language-aware `selectWordsForGame()`
@@ -39,7 +48,7 @@
 - Template syntax: `t('roundOf', '3', '8')` → replaces `{0}`, `{1}` etc.
 - Default language: `lt` (stored in localStorage key `guess-the-words-lang`)
 - Language stored in `GameConfig.language`, synced via WebRTC
-- App.tsx uses inline conditionals for error strings (cannot call `useT()` since it renders I18nProvider)
+- Error strings use inline conditionals (hooks cannot call `useT()` since they're outside I18nProvider)
 
 ## Game architecture
 - Hooks are mounted per-screen, not in App.tsx: solo hooks only active during solo, multiplayer hooks only active during multiplayer

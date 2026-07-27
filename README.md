@@ -34,10 +34,17 @@ src/
 ├── App.tsx              — root component, screen routing, wires hooks together
 ├── main.tsx             — entry point
 ├── pages/
-│   ├── HomeScreen.tsx   — name input, create/join game
-│   ├── Lobby.tsx        — multiplayer container, owns PeerManager + multiplayer hooks
-│   ├── GameScreen.tsx   — main game UI (word display, keyboard, input)
-│   └── SoloGame.tsx     — solo game screen, mounts solo hooks
+│   ├── HomeScreen.tsx   — name input, routes to MenuScreen or JoinScreen
+│   ├── MenuScreen.tsx   — create game / solo practice buttons
+│   ├── JoinScreen.tsx   — join game form (when ?room= in URL)
+│   ├── Lobby.tsx        — thin lobby consumer, renders LobbyUI or GameScreen
+│   ├── LobbyUI.tsx      — presentational lobby (player list, invite link)
+│   ├── SoloGame.tsx     — solo game screen, mounts solo hooks
+│   ├── GameScreen.tsx   — phase router (delegates to phase screens)
+│   ├── PlayingScreen.tsx — playing phase (keyboard, word display, timer)
+│   ├── RoundIntroScreen.tsx — round intro (theme reveal)
+│   ├── RoundEndScreen.tsx   — round end (winner, answer reveal)
+│   └── GameOverScreen.tsx   — game over (final standings)
 ├── components/
 │   ├── WordDisplay.tsx  — letter tiles with reveal animation
 │   ├── Keyboard.tsx     — on-screen keyboard with language variants
@@ -47,10 +54,12 @@ src/
 │   ├── PlayerList.tsx   — multiplayer player list
 │   └── Scoreboard.tsx   — scores table
 ├── store/
-│   ├── game-logic.ts          — pure game logic functions
+│   ├── game-logic.ts          — pure game logic functions + state builders
 │   ├── use-language.ts        — language state hook
 │   ├── use-solo-game.ts       — solo game state machine hook
 │   └── use-multiplayer-game.ts — multiplayer host/peer game hook
+├── utils/
+│   └── share.ts         — copy/share invite link utilities
 ├── types/
 │   ├── game.ts          — GameState, Player, GameConfig, Theme, Language
 │   └── messages.ts      — WebRTC message types
