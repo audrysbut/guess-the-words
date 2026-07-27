@@ -68,9 +68,14 @@ export default function PlayingScreen({ gameState, playerId, onLetterGuess, onWo
             )
           })}
         </div>
-        {!isSolo && (
-          <Timer turnEndsAt={gameState.turnEndsAt} isActive={true} />
-        )}
+          {!isSolo && (
+            <Timer turnEndsAt={gameState.turnEndsAt} isActive={true} />
+          )}
+          {!isMyTurn && !isSolo && (
+            <div class="waiting-turn">
+              {t('waitingFor', gameState.players.find(p => p.id === gameState.currentTurn)?.name ?? '...')}
+            </div>
+          )}
       </div>
 
       <div class="game-main">
@@ -94,11 +99,6 @@ export default function PlayingScreen({ gameState, playerId, onLetterGuess, onWo
           />
         </div>
 
-        {!isMyTurn && !isSolo && (
-          <div class="waiting-turn">
-            {t('waitingFor', gameState.players.find(p => p.id === gameState.currentTurn)?.name ?? '...')}
-          </div>
-        )}
       </div>
     </div>
   )

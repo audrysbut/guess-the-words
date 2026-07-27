@@ -734,9 +734,32 @@ input:focus, select:focus {
 }
 
 .waiting-turn {
+  font-size: 0.8rem;
   color: var(--text-dim);
-  font-size: 1.1rem;
-  padding: 16px;
+  background: var(--surface2);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  margin-top: 12px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.waiting-turn::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--correct);
+  flex-shrink: 0;
+  animation: waitingPulse 1.2s ease infinite;
+}
+
+@keyframes waitingPulse {
+  0%, 100% { opacity: 1; scale: 1; }
+  50% { opacity: 0.4; scale: 0.7; }
 }
 
 /* ====== ROUND END ====== */
