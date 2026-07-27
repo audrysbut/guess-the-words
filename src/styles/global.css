@@ -452,8 +452,14 @@ input:focus, select:focus {
 }
 
 .key.used {
-  opacity: 0;
+  animation: keyUsed 0.6s ease forwards;
   pointer-events: none;
+}
+
+@keyframes keyUsed {
+  0% { opacity: 0.5; transform: scale(1); background: var(--surface2); color: var(--text); }
+  20% { opacity: 1; transform: scale(1.15); background: var(--correct); color: white; }
+  100% { opacity: 0; transform: scale(0.8); }
 }
 
 /* ====== GUESS INPUT ====== */
