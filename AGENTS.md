@@ -14,9 +14,14 @@
 - No test runner, no linter, no formatter configured
 
 ## Project structure
-- `src/App.tsx` — root component, game state machine (screen: home/lobby/game), host game logic, solo mode
+- `src/App.tsx` — root component, screen routing, room management, wires hooks together
 - `src/pages/` — HomeScreen, Lobby, GameScreen
 - `src/components/` — Keyboard, GuessInput, WordDisplay, Timer, ThemeReveal, PlayerList, Scoreboard
+- `src/store/` — hooks and pure game logic
+  - `game-logic.ts` — pure game state transformation functions (letter guess, word guess, round transitions)
+  - `use-language.ts` — language state with localStorage persistence
+  - `use-solo-game.ts` — solo game state machine (state, handlers, round effects)
+  - `use-multiplayer-game.ts` — host/multiplayer game logic (handlers, timer, peer message routing, round effects)
 - `src/types/game.ts` — GameState, Player, GameConfig, Theme, Language types
 - `src/types/messages.ts` — WebRTC message types
 - `src/data/words.ts` — English word bank (~180 entries) + language-aware `selectWordsForGame()`

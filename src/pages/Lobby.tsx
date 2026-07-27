@@ -1,4 +1,3 @@
-import { useState } from 'preact/hooks'
 import type { Player } from '@/types/game'
 import { useT } from '@/i18n/context'
 

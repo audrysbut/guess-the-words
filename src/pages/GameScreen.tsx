@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'preact/hooks'
+import { useEffect, useRef } from 'preact/hooks'
 import { WordDisplay } from '@/components/WordDisplay'
 import { Keyboard } from '@/components/Keyboard'
 import { GuessInput } from '@/components/GuessInput'

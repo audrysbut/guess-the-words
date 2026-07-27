@@ -31,7 +31,7 @@ npm run deploy    # deploy to GitHub Pages
 
 ```
 src/
-├── App.tsx              — root component, game state machine, host logic
+├── App.tsx              — root component, screen routing, room management, wires hooks
 ├── main.tsx             — entry point
 ├── pages/
 │   ├── HomeScreen.tsx   — name input, create/join game
@@ -45,6 +45,11 @@ src/
 │   ├── ThemeReveal.tsx  — current theme card
 │   ├── PlayerList.tsx   — multiplayer player list
 │   └── Scoreboard.tsx   — scores table
+├── store/
+│   ├── game-logic.ts          — pure game logic functions
+│   ├── use-language.ts        — language state hook
+│   ├── use-solo-game.ts       — solo game state machine hook
+│   └── use-multiplayer-game.ts — multiplayer host/peer game hook
 ├── types/
 │   ├── game.ts          — GameState, Player, GameConfig, Theme, Language
 │   └── messages.ts      — WebRTC message types
