@@ -25,8 +25,8 @@ export default function GameOverScreen({ gameState, playerId }: GameOverScreenPr
         <div class="final-standings">
           {sortedPlayers.map((p, i) => (
             <div key={p.id} class={`standing-row ${i === 0 ? 'winner' : ''}`}>
-              <span class="rank">#{i + 1}</span>
-              <span class="name">{p.name}{p.id === playerId ? ` ${t('you')}` : ''}</span>
+              <span class="rank">#{i + 1} </span>
+              <span class="name">{p.name}{p.id === playerId ? ` ${t('you')} ` : ''}</span>
               <span class="score">{p.points} {t('pts')}</span>
             </div>
           ))}
