@@ -447,12 +447,13 @@ input:focus, select:focus {
 }
 
 .key:disabled {
-  opacity: 0.3;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .key.used {
-  opacity: 0.3;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ====== GUESS INPUT ====== */
