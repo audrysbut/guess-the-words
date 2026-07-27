@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'preact/hooks'
 import type { Language } from '@/types/game'
 import { useT } from '@/i18n/context'
+import JoinScreen from './JoinScreen'
+import MenuScreen from './MenuScreen'
 
 const STORAGE_KEY = 'guess-the-words-player-name'
 
@@ -32,64 +34,29 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
   const handleJoin = () => { if (name.trim() && initialRoomId) onJoinRoom(name.trim(), initialRoomId) }
   const handleSolo = () => { if (name.trim()) onStartSolo(name.trim()) }
 
-  const langSwitcher = (
-    <button class="lang-switcher" onClick={onToggleLang} title={t('switchLanguage')}>
-      {lang === 'lt' ? 'EN' : 'LT'}
-    </button>
-  )
-
-  if (initialRoomId) {
-    return (
-      <div class="page home-screen">
-        {langSwitcher}
-        <h1 class="title">{t('title')}</h1>
-        <p class="subtitle">{t('joinGame')}</p>
-        <div class="card">
-          <label for="join-name">{t('yourName')}</label>
-          <input
-            id="join-name"
-            type="text"
-            value={name}
-            onInput={handleNameChange}
-            placeholder={t('enterYourName')}
-            maxLength={20}
-            autoFocus
-          />
-          <button class="btn btn-accent" onClick={handleJoin} disabled={!name.trim()}>
-            {t('join')}
-          </button>
-          {error && <p class="error">{error}</p>}
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div class="page home-screen">
-      {langSwitcher}
+      <button class="lang-switcher" onClick={onToggleLang} title={t('switchLanguage')}>
+        {lang === 'lt' ? 'EN' : 'LT'}
+      </button>
       <h1 class="title">{t('title')}</h1>
-      <p class="subtitle">{t('subtitle')}</p>
-      <div class="card">
-        <label for="menu-name">{t('yourName')}</label>
-        <input
-          id="menu-name"
-          type="text"
-          value={name}
-          onInput={handleNameChange}
-          placeholder={t('enterYourName')}
-          maxLength={20}
-          autoFocus
+
+      {initialRoomId ? (
+        <JoinScreen
+          name={name}
+          onNameChange={handleNameChange}
+          onJoin={handleJoin}
+          error={error}
         />
-        <div class="btn-row">
-          <button class="btn btn-primary" onClick={handleCreate} disabled={!name.trim()}>
-            {t('createGame')}
-          </button>
-          <button class="btn btn-secondary" onClick={handleSolo} disabled={!name.trim()}>
-            {t('soloPractice')}
-          </button>
-        </div>
-        {error && <p class="error">{error}</p>}
-      </div>
+      ) : (
+        <MenuScreen
+          name={name}
+          onNameChange={handleNameChange}
+          onCreate={handleCreate}
+          onSolo={handleSolo}
+          error={error}
+        />
+      )}
     </div>
   )
 }
