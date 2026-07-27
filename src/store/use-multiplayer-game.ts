@@ -1,19 +1,32 @@
 import { useState, useEffect, useRef, useCallback } from 'preact/hooks'
 import type { GameState, Player, Language } from '@/types/game'
+import { ALL_THEMES } from '@/types/game'
 import type { Message as PeerMessage } from '@/types/messages'
-import type { PeerManager } from '@/webrtc/peer-manager'
+import { PeerManager } from '@/webrtc/peer-manager'
 import { selectWordsForGame } from '@/data/words'
 import {
   applyLetterGuess, applyWordGuess, getNextPlayerId,
-  buildRoundEndState, buildPlayingState, advanceToNextRound,
+  buildRoundEndState, buildPlayingState, advanceToNextRound, createRoundIntroState,
 } from './game-logic'
 
+const DEFAULT_CONFIG = {
+  totalRounds: 8,
+  themes: [...ALL_THEMES],
+  timeLimit: 30,
+}
+
 export function useMultiplayerGame(
-  managerRef: { current: PeerManager | null },
+  playerName: string,
+  roomCodeInput: string | undefined,
+  lang: Language,
   setLang?: (lang: Language) => void,
 ) {
+  const managerRef = useRef<PeerManager | null>(null)
   const [gameState, setGameState] = useState<GameState | null>(null)
   const [players, setPlayers] = useState<Player[]>([])
+  const [connecting, setConnecting] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [roomCode, setRoomCode] = useState(roomCodeInput || '')
   const gameStateRef = useRef<GameState | null>(null)
   const turnTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -34,14 +47,14 @@ export function useMultiplayerGame(
       managerRef.current?.send({ type: 'state_sync', state: updated })
       startTurnTimer(updated)
     }, gs.config.timeLimit * 1000)
-  }, [managerRef])
+  }, [])
 
   const advanceRound = useCallback((current: GameState) => {
     const words = selectWordsForGame(current.config.themes, current.config.totalRounds, current.config.language)
     const newState = advanceToNextRound(current, words)
     setGameState(newState)
     managerRef.current?.send({ type: 'state_sync', state: newState })
-  }, [managerRef])
+  }, [])
 
   const handleHostLetterGuess = useCallback((letter: string) => {
     const gs = gameStateRef.current
@@ -73,7 +86,7 @@ export function useMultiplayerGame(
     setGameState(updated)
     managerRef.current?.send({ type: 'state_sync', state: updated })
     startTurnTimer(updated)
-  }, [managerRef, startTurnTimer])
+  }, [startTurnTimer])
 
   const handleHostWordGuess = useCallback((word: string) => {
     const gs = gameStateRef.current
@@ -121,7 +134,7 @@ export function useMultiplayerGame(
     setGameState(updated)
     managerRef.current?.send({ type: 'state_sync', state: updated })
     startTurnTimer(updated)
-  }, [managerRef, startTurnTimer])
+  }, [startTurnTimer])
 
   const handlePeerMessage = useCallback((message: PeerMessage, senderId: string) => {
     const host = managerRef.current?.isHost ?? false
@@ -174,7 +187,80 @@ export function useMultiplayerGame(
       })
       setPlayers((prev: Player[]) => prev.filter(p => p.id !== message.playerId))
     }
-  }, [managerRef, handleHostLetterGuess, handleHostWordGuess, setLang])
+  }, [handleHostLetterGuess, handleHostWordGuess, setLang])
+
+  const handlePeerMessageRef = useRef(handlePeerMessage)
+  handlePeerMessageRef.current = handlePeerMessage
+
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      try {
+        const m = new PeerManager()
+        const config = { ...DEFAULT_CONFIG, language: lang }
+        let room: string
+
+        m.onMessage((msg, id) => handlePeerMessageRef.current(msg, id))
+
+        if (roomCodeInput) {
+          await m.joinRoom(roomCodeInput, playerName)
+          room = roomCodeInput
+        } else {
+          const result = await m.createRoom(playerName, config)
+          room = result.roomCode
+          if (!cancelled) {
+            setGameState(result.state)
+            setPlayers(result.state.players)
+          }
+        }
+
+        if (cancelled) { m.disconnect(); return }
+
+        managerRef.current = m
+        setRoomCode(room)
+
+        if (!roomCodeInput) {
+          const url = `${window.location.origin}/guess-the-words/?room=${room}`
+          window.history.replaceState(null, '', url)
+        }
+      } catch {
+        if (!cancelled) {
+          setError(lang === 'lt'
+            ? (roomCodeInput ? 'Nepavyko prisijungti prie kambario' : 'Nepavyko sukurti kambario')
+            : (roomCodeInput ? 'Failed to join room' : 'Failed to create room'))
+        }
+      } finally {
+        if (!cancelled) setConnecting(false)
+      }
+    })()
+
+    return () => {
+      cancelled = true
+      managerRef.current?.disconnect()
+      managerRef.current = null
+    }
+  }, [])
+
+  const isHost = managerRef.current?.isHost ?? false
+  const peerId = managerRef.current?.id ?? ''
+
+  const letterGuess = isHost
+    ? handleHostLetterGuess
+    : (l: string) => managerRef.current?.send({ type: 'guess_letter', playerId: peerId, letter: l })
+
+  const wordGuess = isHost
+    ? handleHostWordGuess
+    : (w: string) => managerRef.current?.send({ type: 'guess_word', playerId: peerId, word: w })
+
+  const handleStartGame = () => {
+    const m = managerRef.current
+    const gs = gameStateRef.current
+    if (!m?.isHost || !gs) return
+    const words = selectWordsForGame(gs.config.themes, gs.config.totalRounds, gs.config.language)
+    const newState = createRoundIntroState(gs, words[0], 0)
+    setGameState(newState)
+    m.send({ type: 'state_sync', state: newState })
+  }
 
   useEffect(() => {
     if (!gameState || gameState.phase !== 'round_intro') return
@@ -196,7 +282,7 @@ export function useMultiplayerGame(
       startTurnTimer(updated)
     }, 3000)
     return () => clearTimeout(t)
-  }, [gameState?.phase, gameState?.currentRound, managerRef, startTurnTimer])
+  }, [gameState?.phase, gameState?.currentRound, startTurnTimer])
 
   useEffect(() => {
     if (!gameState || gameState.phase !== 'round_end') return
@@ -205,15 +291,18 @@ export function useMultiplayerGame(
 
     const t = setTimeout(() => advanceRound(gameState), 4000)
     return () => clearTimeout(t)
-  }, [gameState?.phase, gameState?.currentRound, managerRef, advanceRound])
+  }, [gameState?.phase, gameState?.currentRound, advanceRound])
 
   return {
+    connecting,
+    error,
+    roomCode,
     gameState,
-    setGameState,
     players,
-    setPlayers,
-    handleHostLetterGuess,
-    handleHostWordGuess,
-    handlePeerMessage,
+    isHost,
+    peerId,
+    letterGuess,
+    wordGuess,
+    handleStartGame,
   }
 }
