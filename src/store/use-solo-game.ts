@@ -10,11 +10,11 @@ const SOLO_CONFIG = {
   timeLimit: 30,
 }
 
-export function useSoloGame(lang: Language) {
+export function useSoloGame() {
   const [soloGameState, setSoloGameState] = useState<GameState | null>(null)
   const soloWordListRef = useRef<WordEntry[]>([])
 
-  const handleStartSolo = (name: string) => {
+  const handleStartSolo = (name: string, lang: Language) => {
     const playerId = `solo-${Date.now()}`
     const config = { ...SOLO_CONFIG, language: lang }
     const words = selectWordsForGame(config.themes, config.totalRounds, lang)

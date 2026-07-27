@@ -5,13 +5,9 @@ import type { PeerManager } from '@/webrtc/peer-manager'
 import { selectWordsForGame } from '@/data/words'
 import { applyLetterGuess, applyWordGuess, getNextPlayerId, createRoundIntroState } from './game-logic'
 
-interface UseMultiplayerGameOptions {
-  onStateSync?: (state: GameState) => void
-}
-
 export function useMultiplayerGame(
   managerRef: { current: PeerManager | null },
-  { onStateSync }: UseMultiplayerGameOptions = {},
+  setLang?: (lang: Language) => void,
 ) {
   const [gameState, setGameState] = useState<GameState | null>(null)
   const [players, setPlayers] = useState<Player[]>([])
@@ -197,7 +193,7 @@ export function useMultiplayerGame(
     if (message.type === 'state_sync' && !host) {
       setGameState(message.state)
       setPlayers(message.state.players)
-      onStateSync?.(message.state)
+      setLang?.(message.state.config.language)
     }
 
     if (message.type === 'player-joined' && !host) {
@@ -214,7 +210,7 @@ export function useMultiplayerGame(
       })
       setPlayers((prev: Player[]) => prev.filter(p => p.id !== message.playerId))
     }
-  }, [managerRef, handleHostLetterGuess, handleHostWordGuess, onStateSync])
+  }, [managerRef, handleHostLetterGuess, handleHostWordGuess, setLang])
 
   useEffect(() => {
     if (!gameState || gameState.phase !== 'round_intro') return

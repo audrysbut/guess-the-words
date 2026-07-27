@@ -31,12 +31,13 @@ npm run deploy    # deploy to GitHub Pages
 
 ```
 src/
-├── App.tsx              — root component, screen routing, room management, wires hooks
+├── App.tsx              — root component, screen routing, wires hooks together
 ├── main.tsx             — entry point
 ├── pages/
 │   ├── HomeScreen.tsx   — name input, create/join game
-│   ├── Lobby.tsx        — player list, room code, start game
-│   └── GameScreen.tsx   — main game UI (word display, keyboard, input)
+│   ├── Lobby.tsx        — multiplayer container, owns PeerManager + multiplayer hooks
+│   ├── GameScreen.tsx   — main game UI (word display, keyboard, input)
+│   └── SoloGame.tsx     — solo game screen, mounts solo hooks
 ├── components/
 │   ├── WordDisplay.tsx  — letter tiles with reveal animation
 │   ├── Keyboard.tsx     — on-screen keyboard with language variants

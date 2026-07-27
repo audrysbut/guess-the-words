@@ -15,7 +15,9 @@
 
 ## Project structure
 - `src/App.tsx` — root component, screen routing, room management, wires hooks together
-- `src/pages/` — HomeScreen, Lobby, GameScreen
+- `src/pages/` — HomeScreen, Lobby, GameScreen, SoloGame
+  - `SoloGame.tsx` — solo game screen, mounts `useSoloGame`, renders `GameScreen`
+  - `Lobby.tsx` — multiplayer container, owns PeerManager + `useMultiplayerGame`, renders lobby UI or `GameScreen` internally
 - `src/components/` — Keyboard, GuessInput, WordDisplay, Timer, ThemeReveal, PlayerList, Scoreboard
 - `src/store/` — hooks and pure game logic
   - `game-logic.ts` — pure game state transformation functions (letter guess, word guess, round transitions)
@@ -39,6 +41,7 @@
 - App.tsx uses inline conditionals for error strings (cannot call `useT()` since it renders I18nProvider)
 
 ## Game architecture
+- Hooks are mounted per-screen, not in App.tsx: solo hooks only active during solo, multiplayer hooks only active during multiplayer
 - Host drives all game logic locally, sends `state_sync` messages to peers
 - Solo mode runs entirely client-side via `soloGameState`
 - Phases: `lobby → round_intro → playing → round_end → game_over` (cycle round_intro→playing→round_end)
