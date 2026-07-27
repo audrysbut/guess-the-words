@@ -18,6 +18,7 @@
 - `src/pages/` — HomeScreen, Lobby, GameScreen, SoloGame
   - `SoloGame.tsx` — solo game screen, mounts `useSoloGame`, renders `GameScreen`
   - `Lobby.tsx` — multiplayer container, owns PeerManager + `useMultiplayerGame`, renders lobby UI or `GameScreen` internally
+  - `GameScreen.tsx` — phase router, delegates to `PlayingScreen`, `RoundIntroScreen`, `RoundEndScreen`, `GameOverScreen`
 - `src/components/` — Keyboard, GuessInput, WordDisplay, Timer, ThemeReveal, PlayerList, Scoreboard
 - `src/store/` — hooks and pure game logic
   - `game-logic.ts` — pure game state transformation functions (letter guess, word guess, round transitions)

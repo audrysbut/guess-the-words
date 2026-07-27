@@ -6,6 +6,67 @@ export function getNextPlayerId(players: Player[], currentId: string): string {
   return players[(idx + 1) % players.length].id
 }
 
+export function buildRoundEndState(
+  state: GameState,
+  partial: {
+    revealedTokens: boolean[]
+    guessedLetters?: string[]
+    scores: Record<string, number>
+    players: Player[]
+  },
+): GameState {
+  return {
+    ...state,
+    revealedTokens: partial.revealedTokens,
+    guessedLetters: partial.guessedLetters ?? state.guessedLetters,
+    scores: partial.scores,
+    players: partial.players,
+    phase: 'round_end',
+    roundWinner: state.currentTurn,
+    currentTurn: '',
+    turnEndsAt: null,
+  }
+}
+
+export function buildPlayingState(
+  state: GameState,
+  partial: {
+    revealedTokens?: boolean[]
+    guessedLetters?: string[]
+    scores?: Record<string, number>
+    players?: Player[]
+  },
+  nextTurn: string,
+  turnEndsAt: number,
+): GameState {
+  return {
+    ...state,
+    ...partial,
+    currentTurn: nextTurn,
+    turnEndsAt,
+  }
+}
+
+export function buildGameOverState(state: GameState): GameState {
+  return {
+    ...state,
+    phase: 'game_over',
+    currentTurn: '',
+    turnEndsAt: null,
+  }
+}
+
+export function advanceToNextRound(
+  state: GameState,
+  words: WordEntry[],
+): GameState {
+  const nextRound = state.currentRound + 1
+  if (nextRound >= state.totalRounds) return buildGameOverState(state)
+  const nextWord = words[nextRound % words.length]
+  if (!nextWord) return buildGameOverState(state)
+  return createRoundIntroState(state, nextWord, nextRound)
+}
+
 export function applyLetterGuess(
   state: GameState,
   letter: string,

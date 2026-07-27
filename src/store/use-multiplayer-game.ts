@@ -3,7 +3,10 @@ import type { GameState, Player, Language } from '@/types/game'
 import type { Message as PeerMessage } from '@/types/messages'
 import type { PeerManager } from '@/webrtc/peer-manager'
 import { selectWordsForGame } from '@/data/words'
-import { applyLetterGuess, applyWordGuess, getNextPlayerId, createRoundIntroState } from './game-logic'
+import {
+  applyLetterGuess, applyWordGuess, getNextPlayerId,
+  buildRoundEndState, buildPlayingState, advanceToNextRound,
+} from './game-logic'
 
 export function useMultiplayerGame(
   managerRef: { current: PeerManager | null },
@@ -34,22 +37,8 @@ export function useMultiplayerGame(
   }, [managerRef])
 
   const advanceRound = useCallback((current: GameState) => {
-    const nextRound = current.currentRound + 1
-    if (nextRound >= current.totalRounds) {
-      const final: GameState = { ...current, phase: 'game_over', currentTurn: '', turnEndsAt: null }
-      setGameState(final)
-      managerRef.current?.send({ type: 'state_sync', state: final })
-      return
-    }
     const words = selectWordsForGame(current.config.themes, current.config.totalRounds, current.config.language)
-    const nextWord = words[nextRound % words.length]
-    if (!nextWord) {
-      const final: GameState = { ...current, phase: 'game_over', currentTurn: '', turnEndsAt: null }
-      setGameState(final)
-      managerRef.current?.send({ type: 'state_sync', state: final })
-      return
-    }
-    const newState = createRoundIntroState(current, nextWord, nextRound)
+    const newState = advanceToNextRound(current, words)
     setGameState(newState)
     managerRef.current?.send({ type: 'state_sync', state: newState })
   }, [managerRef])
@@ -63,32 +52,24 @@ export function useMultiplayerGame(
     if (!result) return
 
     if (result.allRevealed) {
-      const final: GameState = {
-        ...gs,
-        guessedLetters: result.guessedLetters,
+      const final = buildRoundEndState(gs, {
         revealedTokens: result.revealedTokens,
+        guessedLetters: result.guessedLetters,
         scores: result.scores,
         players: result.players,
-        phase: 'round_end',
-        roundWinner: gs.currentTurn,
-        currentTurn: '',
-        turnEndsAt: null,
-      }
+      })
       setGameState(final)
       managerRef.current?.send({ type: 'state_sync', state: final })
       return
     }
 
     const next = result.correct ? gs.currentTurn : getNextPlayerId(gs.players, gs.currentTurn)
-    const updated: GameState = {
-      ...gs,
-      guessedLetters: result.guessedLetters,
+    const updated = buildPlayingState(gs, {
       revealedTokens: result.revealedTokens,
+      guessedLetters: result.guessedLetters,
       scores: result.scores,
       players: result.players,
-      currentTurn: next,
-      turnEndsAt: Date.now() + gs.config.timeLimit * 1000,
-    }
+    }, next, Date.now() + gs.config.timeLimit * 1000)
     setGameState(updated)
     managerRef.current?.send({ type: 'state_sync', state: updated })
     startTurnTimer(updated)
@@ -103,16 +84,11 @@ export function useMultiplayerGame(
     if (!result) return
 
     if (result.isFullMatch) {
-      const final: GameState = {
-        ...gs,
+      const final = buildRoundEndState(gs, {
         revealedTokens: gs.currentTokens.map(() => true),
         scores: result.scores,
         players: result.players,
-        phase: 'round_end',
-        roundWinner: gs.currentTurn,
-        currentTurn: '',
-        turnEndsAt: null,
-      }
+      })
       setGameState(final)
       managerRef.current?.send({ type: 'state_sync', state: final })
       return
@@ -120,28 +96,20 @@ export function useMultiplayerGame(
 
     if (result.tokenIdx !== -1) {
       if (result.allRevealed) {
-        const final: GameState = {
-          ...gs,
+        const final = buildRoundEndState(gs, {
           revealedTokens: result.revealedTokens,
           scores: result.scores,
           players: result.players,
-          phase: 'round_end',
-          roundWinner: gs.currentTurn,
-          currentTurn: '',
-          turnEndsAt: null,
-        }
+        })
         setGameState(final)
         managerRef.current?.send({ type: 'state_sync', state: final })
         return
       }
-      const updated: GameState = {
-        ...gs,
+      const updated = buildPlayingState(gs, {
         revealedTokens: result.revealedTokens,
         scores: result.scores,
         players: result.players,
-        currentTurn: gs.currentTurn,
-        turnEndsAt: Date.now() + gs.config.timeLimit * 1000,
-      }
+      }, gs.currentTurn, Date.now() + gs.config.timeLimit * 1000)
       setGameState(updated)
       managerRef.current?.send({ type: 'state_sync', state: updated })
       startTurnTimer(updated)
@@ -149,11 +117,7 @@ export function useMultiplayerGame(
     }
 
     const next = getNextPlayerId(gs.players, gs.currentTurn)
-    const updated: GameState = {
-      ...gs,
-      currentTurn: next,
-      turnEndsAt: Date.now() + gs.config.timeLimit * 1000,
-    }
+    const updated = buildPlayingState(gs, {}, next, Date.now() + gs.config.timeLimit * 1000)
     setGameState(updated)
     managerRef.current?.send({ type: 'state_sync', state: updated })
     startTurnTimer(updated)

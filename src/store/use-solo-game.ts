@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'preact/hooks'
 import type { GameState, Language, WordEntry } from '@/types/game'
 import { ALL_THEMES } from '@/types/game'
 import { selectWordsForGame } from '@/data/words'
-import { applyLetterGuess, applyWordGuess, createRoundIntroState } from './game-logic'
+import { applyLetterGuess, applyWordGuess, buildRoundEndState, advanceToNextRound } from './game-logic'
 
 const SOLO_CONFIG = {
   totalRounds: 8,
@@ -46,22 +46,16 @@ export function useSoloGame() {
       const result = applyLetterGuess(prev, letter)
       if (!result) return prev
 
-      const pid = prev.players[0]?.id ?? ''
-
       if (result.allRevealed) {
-        return {
-          ...prev,
-          guessedLetters: result.guessedLetters,
+        return buildRoundEndState(prev, {
           revealedTokens: result.revealedTokens,
-          phase: 'round_end' as const,
-          roundWinner: pid,
+          guessedLetters: result.guessedLetters,
           scores: result.scores,
           players: result.players,
-          currentTurn: '',
-          turnEndsAt: null,
-        }
+        })
       }
 
+      const pid = prev.players[0]?.id ?? ''
       return {
         ...prev,
         guessedLetters: result.guessedLetters,
@@ -79,21 +73,15 @@ export function useSoloGame() {
       const result = applyWordGuess(prev, word)
       if (!result || !result.correct) return prev
 
-      const pid = prev.players[0]?.id ?? ''
-
       if (result.isFullMatch || result.allRevealed) {
-        return {
-          ...prev,
+        return buildRoundEndState(prev, {
           revealedTokens: result.revealedTokens,
-          phase: 'round_end' as const,
-          roundWinner: pid,
           scores: result.scores,
           players: result.players,
-          currentTurn: '',
-          turnEndsAt: null,
-        }
+        })
       }
 
+      const pid = prev.players[0]?.id ?? ''
       return {
         ...prev,
         revealedTokens: result.revealedTokens,
@@ -122,25 +110,9 @@ export function useSoloGame() {
   useEffect(() => {
     if (!soloGameState || soloGameState.phase !== 'round_end') return
     const t = setTimeout(() => {
-      const nextRound = soloGameState.currentRound + 1
-      if (nextRound >= soloGameState.totalRounds) {
-        setSoloGameState(prev => {
-          if (!prev) return prev
-          return { ...prev, phase: 'game_over' }
-        })
-        return
-      }
-      const nextWord = soloWordListRef.current[nextRound % soloWordListRef.current.length]
-      if (!nextWord) {
-        setSoloGameState(prev => {
-          if (!prev) return prev
-          return { ...prev, phase: 'game_over' }
-        })
-        return
-      }
       setSoloGameState(prev => {
         if (!prev) return prev
-        return createRoundIntroState(prev, nextWord, nextRound)
+        return advanceToNextRound(prev, soloWordListRef.current)
       })
     }, 4000)
     return () => clearTimeout(t)
