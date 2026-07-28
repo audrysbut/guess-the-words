@@ -26,7 +26,7 @@ const lt: Translations = {
   theAnswerWas: 'Atsakymas buvo:',
   nextRoundStarting: 'Kitas raundas prasideda...',
   waitingFor: 'Laukiama {0}...',
-  you: '(Tu)',
+  you: '(tu)',
   pts: 'tšk.',
   seconds: 's',
   theme: 'Tema',
