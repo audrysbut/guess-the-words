@@ -18,7 +18,7 @@ export default function GameOverScreen({ gameState, playerId }: GameOverScreenPr
         {winner && (
           <div class="winner-announcement">
             <div class="trophy" style="font-size: 3rem; text-align: center">&#127942;</div>
-            <h2>{winner.name} {t('wins') }</h2>
+            <h2>{winner.name} {t('wins')}</h2>
             <p>{winner.points} {t('pointsTotal')}</p>
           </div>
         )}
