@@ -562,6 +562,18 @@ input:focus, select:focus {
   gap: 8px;
 }
 
+.standing-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+}
+
+.standing-row .score {
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
 .score-row {
   display: flex;
   align-items: center;
