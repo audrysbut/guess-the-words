@@ -270,7 +270,7 @@ export function useMultiplayerGame(
     const t = setTimeout(() => {
       const gs = gameStateRef.current
       if (!gs) return
-      const firstPlayer = gs.players.find(p => !p.isHost) ?? gs.players[0]
+      const firstPlayer = gs.players[gs.currentRound % gs.players.length]
       const updated: GameState = {
         ...gs,
         phase: 'playing',
