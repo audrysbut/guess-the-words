@@ -49,6 +49,11 @@ html, body {
   padding: 20px;
 }
 
+.gameover-screen {
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
 /* Buttons */
 .btn {
   padding: 12px 28px;
@@ -562,11 +567,32 @@ input:focus, select:focus {
   gap: 8px;
 }
 
+.gameover-screen .card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.winner-announcement {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.final-standings {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .standing-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 16px;
+  padding: 6px 12px;
+  background: var(--surface);
+  border-radius: var(--radius);
 }
 
 .standing-row .score {
