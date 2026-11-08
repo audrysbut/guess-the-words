@@ -1,11 +1,11 @@
 # Guess the Words — AGENTS.md
 
 ## Build & dev
-- `npm run dev` — Vite dev server on `127.0.0.1:4200`
-- `npm run build` — `tsc -b && vite build` (must pass both)
-- `npm run preview` — preview production build
-- `npm run deploy` — `gh-pages -d dist` (manual deploy)
-- CI (`.github/workflows/deploy.yml`): `npm ci && npm run build` on push to `main`
+- `bun run dev` — Vite dev server on `127.0.0.1:4200`
+- `bun run build` — `tsc -b && vite build` (must pass both)
+- `bun run preview` — preview production build
+- `bun run deploy` — `gh-pages -d dist` (manual deploy)
+- CI (`.github/workflows/deploy.yml`): `bun install --frozen-lockfile && bun run build` on push to `main`
 
 ## Stack
 - Preact 10 + Vite 6 + TypeScript 5.7, JSX with `jsxImportSource: "preact"`
