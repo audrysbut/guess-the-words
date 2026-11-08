@@ -20,11 +20,11 @@ A multiplayer word-guessing game where players take turns revealing letters and 
 ## Quick start
 
 ```bash
-npm install
-npm run dev       # dev server at http://localhost:4200/guess-the-words/
-npm run build     # tsc -b && vite build
-npm run preview   # preview production build
-npm run deploy    # deploy to GitHub Pages
+bun install
+bun run dev       # dev server at http://localhost:4200/guess-the-words/
+bun run build     # tsc -b && vite build
+bun run preview   # preview production build
+bun run deploy    # deploy to GitHub Pages
 ```
 
 ## Project structure
@@ -89,10 +89,10 @@ src/
 
 ## Deployment
 
-Push to `main` triggers CI (`npm ci && npm run build`) and deploys to GitHub Pages automatically.
+Push to `main` triggers CI (`bun install --frozen-lockfile && bun run build`) and deploys to GitHub Pages automatically.
 
 Manual deploy:
 
 ```bash
-npm run deploy
+bun run deploy
 ```
