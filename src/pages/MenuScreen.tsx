@@ -5,10 +5,11 @@ interface MenuScreenProps {
   onNameChange: (e: Event) => void
   onCreate: () => void
   onSolo: () => void
+  onJoinWithCode?: () => void
   error?: string | null
 }
 
-export default function MenuScreen({ name, onNameChange, onCreate, onSolo, error }: MenuScreenProps) {
+export default function MenuScreen({ name, onNameChange, onCreate, onSolo, onJoinWithCode, error }: MenuScreenProps) {
   const { t } = useT()
 
   return (
@@ -32,6 +33,11 @@ export default function MenuScreen({ name, onNameChange, onCreate, onSolo, error
           {t('soloPractice')}
         </button>
       </div>
+      {onJoinWithCode && (
+        <button class="btn btn-accent" onClick={onJoinWithCode} disabled={!name.trim()} style="width:100%">
+          {t('joinWithCode')}
+        </button>
+      )}
       {error && <p class="error">{error}</p>}
     </div>
   )

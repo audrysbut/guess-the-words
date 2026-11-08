@@ -1,6 +1,7 @@
 import type { Player } from '@/types/game'
 import { useT } from '@/i18n/context'
-import { copyInviteLink, isShareSupported, shareInviteLink } from '@/utils/share'
+import { copyInviteLink, isShareSupported, shareInviteLink, isDesktop, shareQRCode } from '@/utils/share'
+import QRCode from '@/components/QRCode'
 
 import { useState } from 'preact/hooks'
 import type { GameMode } from '@/types/game'
@@ -17,7 +18,6 @@ export default function LobbyUI({ players, isHost, roomCode, onStartGame, error 
   const { t } = useT()
   const [mode, setMode] = useState<GameMode>('classic')
   const inviteUrl = `${window.location.origin}/guess-the-words/?room=${roomCode}`
-
   return (
     <div class="page lobby-screen">
       <h1 class="title" style="font-size: 1.8rem">{t('title')}</h1>
@@ -35,12 +35,25 @@ export default function LobbyUI({ players, isHost, roomCode, onStartGame, error 
         </div>
         {isHost && (
           <div class="lobby-actions">
+            <div class="room-code-block">
+              <span class="room-code-label">{t('roomCode')}</span>
+              <span class="room-code-value">{roomCode}</span>
+            </div>
             <input type="text" readOnly value={inviteUrl} class="invite-input" onClick={e => (e.target as HTMLInputElement).select()} />
             <div class="invite-row">
               <button class="btn btn-accent" onClick={() => copyInviteLink(inviteUrl)} style="flex:1">{t('copyLink')}</button>
+            </div>
+            <div class="invite-row">
               {isShareSupported() && (
                 <button class="btn btn-primary" onClick={() => shareInviteLink(inviteUrl, t('joinGame'))} style="flex:1">{t('share')}</button>
               )}
+              {isDesktop() && (
+                <button class="btn btn-primary" onClick={() => shareQRCode(inviteUrl, t('joinGame'))} style="flex:1">{t('shareQr')}</button>
+              )}
+            </div>
+            <div class="qr-block">
+              <QRCode value={inviteUrl} size={180} />
+              <p class="qr-caption">{t('scanToJoin')}</p>
             </div>
             <div class="mode-select" style="display:flex;align-items:center;gap:8px">
               <label>{t('gameMode')}</label>

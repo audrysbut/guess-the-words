@@ -18,6 +18,8 @@ interface HomeScreenProps {
 
 export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, error, initialRoomId, lang, onToggleLang }: HomeScreenProps) {
   const [name, setName] = useState(() => localStorage.getItem(STORAGE_KEY) || '')
+  const [joinMode, setJoinMode] = useState(false)
+  const [roomCode, setRoomCode] = useState('')
   const { t } = useT()
 
   useEffect(() => {
@@ -30,9 +32,21 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
     localStorage.setItem(STORAGE_KEY, val)
   }
 
+  const handleRoomCodeChange = (e: Event) => {
+    const val = (e.target as HTMLInputElement).value.toUpperCase()
+    setRoomCode(val)
+  }
+
   const handleCreate = () => { if (name.trim()) onCreateRoom(name.trim()) }
-  const handleJoin = () => { if (name.trim() && initialRoomId) onJoinRoom(name.trim(), initialRoomId) }
   const handleSolo = () => { if (name.trim()) onStartSolo(name.trim()) }
+  const handleJoin = () => {
+    if (!name.trim()) return
+    const code = (initialRoomId || roomCode).trim()
+    if (!code) return
+    onJoinRoom(name.trim(), code)
+  }
+
+  const showJoinScreen = !!initialRoomId || joinMode
 
   return (
     <div class="page home-screen">
@@ -41,12 +55,15 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
       </button>
       <h1 class="title">{t('title')}</h1>
 
-      {initialRoomId ? (
+      {showJoinScreen ? (
         <JoinScreen
           name={name}
           onNameChange={handleNameChange}
+          roomCode={initialRoomId || roomCode}
+          onRoomCodeChange={handleRoomCodeChange}
           onJoin={handleJoin}
           error={error}
+          showRoomCode={!initialRoomId}
         />
       ) : (
         <MenuScreen
@@ -54,6 +71,7 @@ export default function HomeScreen({ onStartSolo, onCreateRoom, onJoinRoom, erro
           onNameChange={handleNameChange}
           onCreate={handleCreate}
           onSolo={handleSolo}
+          onJoinWithCode={() => setJoinMode(true)}
           error={error}
         />
       )}
