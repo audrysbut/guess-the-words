@@ -8,6 +8,7 @@ const SOLO_CONFIG = {
   totalRounds: 8,
   themes: [...ALL_THEMES],
   timeLimit: 30,
+  mode: 'classic' as const,
 }
 
 export function useSoloGame() {
@@ -36,6 +37,7 @@ export function useSoloGame() {
       turnEndsAt: null,
       roundWinner: null,
       lastGuessResult: null,
+      pickerId: null,
     }
     setSoloGameState(soloState)
   }

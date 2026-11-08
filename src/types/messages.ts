@@ -5,6 +5,7 @@ export type ClientMessage =
   | { type: 'start_game'; config: GameConfig }
   | { type: 'guess_letter'; playerId: string; letter: string }
   | { type: 'guess_word'; playerId: string; word: string }
+  | { type: 'pick_word'; playerId: string; word: string }
   | { type: 'timeout'; playerId: string }
 
 export type ServerMessage =

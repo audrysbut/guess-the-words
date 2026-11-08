@@ -5,14 +5,16 @@ import type { Message as PeerMessage } from '@/types/messages'
 import { PeerManager } from '@/webrtc/peer-manager'
 import { selectWordsForGame } from '@/data/words'
 import {
-  applyLetterGuess, applyWordGuess, getNextPlayerId,
+  applyLetterGuess, applyWordGuess, getNextTurnPlayer, getNextGuesser,
   buildRoundEndState, buildPlayingState, advanceToNextRound, createRoundIntroState,
+  createPickingState, createRoundIntroStateFromPick,
 } from './game-logic'
 
 const DEFAULT_CONFIG = {
   totalRounds: 8,
   themes: [...ALL_THEMES],
   timeLimit: 30,
+  mode: 'classic' as const,
 }
 
 export function useMultiplayerGame(
@@ -37,7 +39,7 @@ export function useMultiplayerGame(
     turnTimerRef.current = setTimeout(() => {
       const current = gameStateRef.current
       if (!current || current.phase !== 'playing') return
-      const nextTurn = getNextPlayerId(current.players, current.currentTurn)
+      const nextTurn = getNextTurnPlayer(current, current.currentTurn)
       const updated: GameState = {
         ...current,
         currentTurn: nextTurn,
@@ -50,8 +52,13 @@ export function useMultiplayerGame(
   }, [])
 
   const advanceRound = useCallback((current: GameState) => {
-    const words = selectWordsForGame(current.config.themes, current.config.totalRounds, current.config.language)
-    const newState = advanceToNextRound(current, words)
+    let newState: GameState
+    if (current.config.mode === 'custom') {
+      newState = advanceToNextRound(current)
+    } else {
+      const words = selectWordsForGame(current.config.themes, current.config.totalRounds, current.config.language)
+      newState = advanceToNextRound(current, words)
+    }
     setGameState(newState)
     managerRef.current?.send({ type: 'state_sync', state: newState })
   }, [])
@@ -76,7 +83,7 @@ export function useMultiplayerGame(
       return
     }
 
-    const next = result.correct ? gs.currentTurn : getNextPlayerId(gs.players, gs.currentTurn)
+    const next = result.correct ? gs.currentTurn : getNextTurnPlayer(gs, gs.currentTurn)
     const updated = buildPlayingState(gs, {
       revealedTokens: result.revealedTokens,
       guessedLetters: result.guessedLetters,
@@ -129,12 +136,24 @@ export function useMultiplayerGame(
       return
     }
 
-    const next = getNextPlayerId(gs.players, gs.currentTurn)
+    const next = getNextTurnPlayer(gs, gs.currentTurn)
     const updated = buildPlayingState(gs, {}, next, Date.now() + gs.config.timeLimit * 1000)
     setGameState(updated)
     managerRef.current?.send({ type: 'state_sync', state: updated })
     startTurnTimer(updated)
   }, [startTurnTimer])
+
+  const handleHostPickWord = useCallback((word: string) => {
+    const gs = gameStateRef.current
+    if (!gs || gs.phase !== 'picking') return
+    const trimmed = word.trim()
+    if (!trimmed) return
+    if (!/^[\p{L}\s]+$/u.test(trimmed)) return
+    const tokens = trimmed.split(/\s+/)
+    const newState = createRoundIntroStateFromPick(gs, trimmed, tokens, null, gs.currentRound)
+    setGameState(newState)
+    managerRef.current?.send({ type: 'state_sync', state: newState })
+  }, [])
 
   const handlePeerMessage = useCallback((message: PeerMessage, senderId: string) => {
     const host = managerRef.current?.isHost ?? false
@@ -167,6 +186,13 @@ export function useMultiplayerGame(
       handleHostWordGuess(message.word)
     }
 
+    if (message.type === 'pick_word' && host) {
+      const gs = gameStateRef.current
+      if (!gs || gs.phase !== 'picking') return
+      if (gs.pickerId !== message.playerId) return
+      handleHostPickWord(message.word)
+    }
+
     if (message.type === 'state_sync' && !host) {
       setGameState(message.state)
       setPlayers(message.state.players)
@@ -187,7 +213,7 @@ export function useMultiplayerGame(
       })
       setPlayers((prev: Player[]) => prev.filter(p => p.id !== message.playerId))
     }
-  }, [handleHostLetterGuess, handleHostWordGuess, setLang])
+  }, [handleHostLetterGuess, handleHostWordGuess, handleHostPickWord, setLang])
 
   const handlePeerMessageRef = useRef(handlePeerMessage)
   handlePeerMessageRef.current = handlePeerMessage
@@ -252,12 +278,24 @@ export function useMultiplayerGame(
     ? handleHostWordGuess
     : (w: string) => managerRef.current?.send({ type: 'guess_word', playerId: peerId, word: w })
 
-  const handleStartGame = () => {
+  const pickWord = isHost
+    ? handleHostPickWord
+    : (w: string) => managerRef.current?.send({ type: 'pick_word', playerId: peerId, word: w })
+
+  const handleStartGame = (mode: 'classic' | 'custom' = 'classic') => {
     const m = managerRef.current
     const gs = gameStateRef.current
     if (!m?.isHost || !gs) return
-    const words = selectWordsForGame(gs.config.themes, gs.config.totalRounds, gs.config.language)
-    const newState = createRoundIntroState(gs, words[0], 0)
+    const config = { ...gs.config, mode }
+    const stateWithConfig = { ...gs, config }
+    let newState: GameState
+    if (mode === 'custom') {
+      const picker = stateWithConfig.players[0] ?? null
+      newState = createPickingState(stateWithConfig, picker?.id ?? null, 0)
+    } else {
+      const words = selectWordsForGame(config.themes, config.totalRounds, config.language)
+      newState = createRoundIntroState(stateWithConfig, words[0], 0)
+    }
     setGameState(newState)
     m.send({ type: 'state_sync', state: newState })
   }
@@ -270,11 +308,16 @@ export function useMultiplayerGame(
     const t = setTimeout(() => {
       const gs = gameStateRef.current
       if (!gs) return
-      const firstPlayer = gs.players[gs.currentRound % gs.players.length]
+      let firstPlayerId = ''
+      if (gs.config.mode === 'custom' && gs.pickerId) {
+        firstPlayerId = getNextGuesser(gs.players, gs.pickerId, gs.pickerId)
+      } else {
+        firstPlayerId = gs.players[gs.currentRound % gs.players.length]?.id ?? ''
+      }
       const updated: GameState = {
         ...gs,
         phase: 'playing',
-        currentTurn: firstPlayer.id,
+        currentTurn: firstPlayerId,
         turnEndsAt: Date.now() + gs.config.timeLimit * 1000,
       }
       setGameState(updated)
@@ -303,6 +346,7 @@ export function useMultiplayerGame(
     peerId,
     letterGuess,
     wordGuess,
+    pickWord,
     handleStartGame,
   }
 }

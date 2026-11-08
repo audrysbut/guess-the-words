@@ -47,6 +47,14 @@ const lt: Translations = {
   playerCount_one: 'žaidėjas prisijungė',
   playerCount_other: 'žaidėjai prisijungė',
   share: 'Dalintis',
+  gameMode: 'Žaidimo režimas',
+  classicMode: 'Klasikinis',
+  customMode: 'Savi žodžiai',
+  pickWordTitle: 'Pasirink žodį',
+  youArePicking: 'Tu renkiesi žodį, kurį kiti atspės',
+  waitingForPicker: 'Laukiama, kol {0} pasirinks žodį...',
+  enterWord: 'Įvesk žodį arba frazę',
+  submitWord: 'Pateikti žodį',
 }
 
 export default lt

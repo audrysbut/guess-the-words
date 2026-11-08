@@ -15,7 +15,7 @@ export default function Lobby({ playerName, roomCode, lang, setLang }: LobbyProp
   const { t } = useT()
   const {
     connecting, error, roomCode: code, gameState, players,
-    isHost, peerId, letterGuess, wordGuess, handleStartGame,
+    isHost, peerId, letterGuess, wordGuess, pickWord, handleStartGame,
   } = useMultiplayerGame(playerName, roomCode, lang, setLang)
 
   if (connecting) {
@@ -34,6 +34,7 @@ export default function Lobby({ playerName, roomCode, lang, setLang }: LobbyProp
         playerId={peerId}
         onLetterGuess={letterGuess}
         onWordGuess={wordGuess}
+        onPickWord={pickWord}
         isSolo={false}
       />
     )

@@ -1,4 +1,4 @@
-import type { GameState, Player, WordEntry } from '@/types/game'
+import type { GameState, Player, WordEntry, Theme } from '@/types/game'
 
 export function getNextPlayerId(players: Player[], currentId: string): string {
   const idx = players.findIndex(p => p.id === currentId)
@@ -56,13 +56,81 @@ export function buildGameOverState(state: GameState): GameState {
   }
 }
 
+export function createPickingState(
+  state: GameState,
+  pickerId: string | null,
+  round: number,
+): GameState {
+  return {
+    ...state,
+    phase: 'picking',
+    currentRound: round,
+    currentWord: '',
+    currentTokens: [],
+    revealedTokens: [],
+    guessedLetters: [],
+    theme: null,
+    roundWinner: null,
+    currentTurn: '',
+    turnEndsAt: null,
+    pickerId,
+  }
+}
+
+export function createRoundIntroStateFromPick(
+  state: GameState,
+  answer: string,
+  tokens: string[],
+  theme: Theme | null,
+  round: number,
+): GameState {
+  return {
+    ...state,
+    phase: 'round_intro',
+    currentRound: round,
+    currentWord: answer,
+    currentTokens: tokens,
+    revealedTokens: tokens.map(() => false),
+    guessedLetters: [],
+    theme,
+    roundWinner: null,
+    currentTurn: '',
+    turnEndsAt: null,
+    pickerId: state.pickerId,
+  }
+}
+
+export function getNextGuesser(players: Player[], currentId: string, pickerId: string | null): string {
+  if (players.length === 0) return ''
+  if (players.length === 1) return players[0].id
+  let idx = players.findIndex(p => p.id === currentId)
+  if (idx === -1) idx = 0
+  for (let i = 1; i <= players.length; i++) {
+    const cand = players[(idx + i) % players.length].id
+    if (pickerId && cand === pickerId) continue
+    return cand
+  }
+  return players[0].id
+}
+
+export function getNextTurnPlayer(state: GameState, currentId: string): string {
+  if (state.config.mode === 'custom' && state.pickerId) {
+    return getNextGuesser(state.players, currentId, state.pickerId)
+  }
+  return getNextPlayerId(state.players, currentId)
+}
+
 export function advanceToNextRound(
   state: GameState,
-  words: WordEntry[],
+  words?: WordEntry[],
 ): GameState {
   const nextRound = state.currentRound + 1
   if (nextRound >= state.totalRounds) return buildGameOverState(state)
-  const nextWord = words[nextRound % words.length]
+  if (state.config.mode === 'custom') {
+    const picker = state.players[nextRound % state.players.length]
+    return createPickingState(state, picker?.id ?? null, nextRound)
+  }
+  const nextWord = words?.[nextRound % (words?.length || 1)]
   if (!nextWord) return buildGameOverState(state)
   return createRoundIntroState(state, nextWord, nextRound)
 }

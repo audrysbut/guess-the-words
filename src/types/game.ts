@@ -44,14 +44,17 @@ export interface WordEntry {
 
 export type Language = 'en' | 'lt'
 
+export type GameMode = 'classic' | 'custom'
+
 export interface GameConfig {
   totalRounds: number
   themes: Theme[]
   timeLimit: number
   language: Language
+  mode: GameMode
 }
 
-export type GamePhase = 'lobby' | 'round_intro' | 'playing' | 'round_end' | 'game_over'
+export type GamePhase = 'lobby' | 'picking' | 'round_intro' | 'playing' | 'round_end' | 'game_over'
 
 export interface GameState {
   phase: GamePhase
@@ -69,6 +72,7 @@ export interface GameState {
   turnEndsAt: number | null
   roundWinner: string | null
   lastGuessResult?: GuessResult | null
+  pickerId: string | null
 }
 
 export interface GuessResult {
@@ -96,5 +100,6 @@ export function createInitialGameState(config: GameConfig, hostId: string, hostN
     turnEndsAt: null,
     roundWinner: null,
     lastGuessResult: null,
+    pickerId: null,
   }
 }

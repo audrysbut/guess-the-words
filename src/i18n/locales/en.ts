@@ -47,6 +47,14 @@ const en: Translations = {
   playerCount_one: 'player joined',
   playerCount_other: 'players joined',
   share: 'Share',
+  gameMode: 'Game mode',
+  classicMode: 'Classic',
+  customMode: 'Custom words',
+  pickWordTitle: 'Pick a word',
+  youArePicking: 'You are picking the word for others to guess',
+  waitingForPicker: 'Waiting for {0} to pick a word...',
+  enterWord: 'Enter a word or phrase',
+  submitWord: 'Submit word',
 }
 
 export default en

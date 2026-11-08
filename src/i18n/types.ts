@@ -47,5 +47,13 @@ export type TranslationKey =
   | 'playerCount_one'
   | 'playerCount_other'
   | 'share'
+  | 'gameMode'
+  | 'classicMode'
+  | 'customMode'
+  | 'pickWordTitle'
+  | 'youArePicking'
+  | 'waitingForPicker'
+  | 'enterWord'
+  | 'submitWord'
 
 export type Translations = Record<TranslationKey, string>
